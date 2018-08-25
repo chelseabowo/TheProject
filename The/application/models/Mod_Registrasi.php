@@ -23,7 +23,7 @@ class Mod_Registrasi extends CI_Model {
 			$this->db->insert($table,$data);
 			$last_id = $this->db->insert_id();
 			
-			$query ="INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('$last_id','$role','1')";
+			$query ="INSERT INTO d_user_role (m_user_id,m_role_id) VALUES ('$last_id','$role')";
 			return $this->db->query($query);
 		}
 

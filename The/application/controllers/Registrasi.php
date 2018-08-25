@@ -99,7 +99,7 @@ class Registrasi extends CI_Controller {
 				'user_nama'     => $nama, 
 				'user_email'    => $email,
 				'user_password' => $password,
-				'is_wali_kelas' => '0',
+				'is_wali_kelas' => '1',
 				'created_date'  => $date,
 				'is_active'     => '1'
 			);

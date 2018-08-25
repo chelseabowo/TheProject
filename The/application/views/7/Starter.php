@@ -22,9 +22,12 @@
         <div v-show="currentstep == 1">
             <h3>Step 1 : Data Sekolah</h3>
             <div class="form-group">
-                <label for="sekolah">Nama Sekolah</label>
-                <input type="text" name="in_sekolah" class="form-control" placeholder="ID Sekolah" onFocus="findstart();" onBlur="findstop();" required>
+                <label for="sekolah">ID Sekolah</label>
+                <input type="text" name="in_sekolah" class="form-control" placeholder="ID Sekolah" onFocus="findstart_sekolah();" onBlur="findstop_sekolah();" required>
                 <input type="hidden" name="in_id_sekolah" class="form-control" placeholder="ID Sekolah" readonly>
+                <label for="sekolah">ID Kelas</label>
+                <input type="text" name="in_kelas" class="form-control" placeholder="ID Kelas" onFocus="findstart_kelas();" onBlur="findstop_kelas();" required>
+                <input type="hidden" name="in_id_kelas" class="form-control" placeholder="ID Kelas" readonly>
                 <!-- <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> -->
             </div>
         </div>
@@ -125,15 +128,30 @@
 
 <!-- Find ID Sekolah -->
 <script> 
-function findstart(){
-interval = setInterval("find()",1);}
-function find(){
+function findstart_sekolah(){
+interval = setInterval("find_s()",1);}
+function find_s(){
 var in_s = document.sekolah.in_sekolah.value;
-var hasil = in_s.split(" ").join("");
+var hasil_s = in_s.split(" ").join("");
 
-document.sekolah.in_id_sekolah.value = hasil.toUpperCase();
+document.sekolah.in_id_sekolah.value = hasil_s.toUpperCase();
 }
 function findstop(){
+clearInterval(interval);}
+</script>
+<!-- Find ID Sekolah -->
+
+<!-- Find ID Sekolah -->
+<script> 
+function findstart_kelas(){
+interval = setInterval("find_k()",1);}
+function find_k(){
+var in_k = document.sekolah.in_kelas.value;
+var hasil_k = in_k.split(" ").join("");
+
+document.sekolah.in_id_kelas.value = hasil_k.toUpperCase();
+}
+function findstop_kelas(){
 clearInterval(interval);}
 </script>
 <!-- Find ID Sekolah -->

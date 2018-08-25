@@ -26,7 +26,8 @@ class C_starter extends CI_Controller {
 	{
 		$user           = $this->session->userdata('user');
 		$data1 = array(
-			'sekolah_id' => $this->input->post('in_id_sekolah')
+			'sekolah_id' => $this->input->post('in_id_sekolah'),
+			'kelas_id'   => $this->input->post('in_id_kelas')
 		);
 		$data2 = array(
 			'user_tempat_lahir'  => $this->input->post('in_tempat_lahir') ,

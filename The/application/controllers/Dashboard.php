@@ -51,54 +51,54 @@ class Dashboard extends CI_Controller {
 					redirect(base_url('Dashboard/index'));	
 				}
 			}else if($role['m_role_id']=='3'){ //kepala_sekolah
-				if($role['is_verified']=='0' && $role['d_sekolah_id']=='0'){
-					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi CS')</script>";
-					echo "<script>window.location=history.go(-1)</script>";
-				}else if($role['is_verified']=='1' && $role['d_sekolah_id']=='0'){
+				if($role['d_sekolah_id']=='0' && $role['d_kelas_id']=='0'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('3/C_starter/index'));
-				}else if($role['d_sekolah_id']!='0'){
+				}else if($role['d_sekolah_id']!='0' && $role['is_verified']=='1'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('3/C_dashboard/index'));
+				}else if($role['is_verified']=='0'){
+					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi Admin Sekolah')</script>";
+					echo "<script>window.location=history.go(-1)</script>";
 				}else{
 					redirect(base_url('Dashboard/index'));	
 				}
 			}else if($role['m_role_id']=='4'){ //konselor
-				if($role['is_verified']=='0' && $role['d_sekolah_id']=='0'){
-					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi CS')</script>";
-					echo "<script>window.location=history.go(-1)</script>";
-				}else if($role['is_verified']=='1' && $role['d_sekolah_id']=='0'){
+				if($role['d_sekolah_id']=='0' && $role['d_kelas_id']=='0'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('4/C_starter/index'));
-				}else if($role['d_sekolah_id']!='0'){
+				}else if($role['d_sekolah_id']!='0' && $role['is_verified']=='1'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('4/C_dashboard/index'));
+				}else if($role['is_verified']=='0'){
+					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi Admin Sekolah')</script>";
+					echo "<script>window.location=history.go(-1)</script>";
 				}else{
 					redirect(base_url('Dashboard/index'));	
 				}
 			}else if($role['m_role_id']=='5'){ //guru_bk
-				if($role['is_verified']=='0' && $role['d_sekolah_id']=='0'){
-					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi CS')</script>";
-					echo "<script>window.location=history.go(-1)</script>";
-				}else if($role['is_verified']=='1' && $role['d_sekolah_id']=='0'){
+				if($role['d_sekolah_id']=='0' && $role['d_kelas_id']=='0'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('5/C_starter/index'));
-				}else if($role['d_sekolah_id']!='0'){
+				}else if($role['d_sekolah_id']!='0' && $role['is_verified']=='1'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('5/C_dashboard/index'));
+				}else if($role['is_verified']=='0'){
+					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi Admin Sekolah')</script>";
+					echo "<script>window.location=history.go(-1)</script>";
 				}else{
 					redirect(base_url('Dashboard/index'));	
 				}
 			}else if($role['m_role_id']=='6'){ //guru_mapel
-				if($role['is_verified']=='0' && $role['d_sekolah_id']=='0'){
-					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi CS')</script>";
-					echo "<script>window.location=history.go(-1)</script>";
-				}else if($role['is_verified']=='1' && $role['d_sekolah_id']=='0'){
+				if($role['d_sekolah_id']=='0' && $role['d_kelas_id']=='0'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('6/C_starter/index'));
-				}else if($role['d_sekolah_id']!='0'){
+				}else if($role['d_sekolah_id']!='0' && $role['is_verified']=='1'){
 					$this->session->set_userdata($data_session);
 					redirect(base_url('6/C_dashboard/index'));
+				}else if($role['is_verified']=='0'){
+					echo "<script>alert('UserID Anda Belum di Verifikasi,Mohon Hubungi Admin Sekolah')</script>";
+					echo "<script>window.location=history.go(-1)</script>";
 				}else{
 					redirect(base_url('Dashboard/index'));	
 				}
