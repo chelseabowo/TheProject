@@ -121,7 +121,7 @@ class Registrasi extends CI_Controller {
 
 		$data = array(
 			'user_id'       => $nis,
-			'user_nama'     => $nama, 
+			'user_nama'     => $nama,
 			'user_email'    => $email,
 			'user_password' => $password,
 			'is_murid'      => '1',
