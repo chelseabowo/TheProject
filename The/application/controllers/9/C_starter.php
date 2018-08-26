@@ -5,8 +5,7 @@ class C_starter extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('2/M_profil');
-		$this->load->model('2/M_sekolah');
+		$this->load->model('9/M_profil');
 		$this->load->helper('url');
 
 		if($this->session->userdata('status') != "login"){
@@ -16,15 +15,28 @@ class C_starter extends CI_Controller {
 
 	public function index()
 	{
-		$user = $this->session->userdata('user');
-		$where = array('user_id' => $user );
-		$data['list_sekolah'] = $this->M_sekolah->tampil_sekolah()->result();
-		$data['provinsi']     = $this->M_sekolah->tampil_provinsi()->result();
-		$data['kota']         = $this->M_sekolah->tampil_kota()->result();
-		$data['kecamatan']    = $this->M_sekolah->tampil_kecamatan()->result();
-		$data['kelurahan']    = $this->M_sekolah->tampil_kelurahan()->result();
-		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$this->load->view('2/Starter',$data);	
+		$user           = $this->session->userdata('user');
+		$where          = array('user_id' => $user );
+		$data['gender'] = $this->M_profil->call_gender()->result();
+		$data['itsme']  = $this->M_profil->myprofil('m_user',$where)->row_array();
+		$this->load->view('9/Starter',$data);
+	}
+
+	public function update_registrasi()
+	{
+		$user           = $this->session->userdata('user');
+		$data1 = array(
+			'user_id' => $this->input->post('in_id_siswa')
+		);
+		$data2 = array(
+			'user_tempat_lahir'  => $this->input->post('in_tempat_lahir') ,
+			'user_tanggal_lahir' => $this->input->post('in_tanggal_lahir') , 
+			'm_gender_id'        => $this->input->post('in_gender'),
+			'user_alamat'        => $this->input->post('in_alamat') ,
+			'user_no_hp'         => $this->input->post('in_no_hp')
+		);
+		$this->M_profil->update_reg($user,$data1,$data2);
+		redirect(base_url('Dashboard/index/notif'));
 	}
 
 }

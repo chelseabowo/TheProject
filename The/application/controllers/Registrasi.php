@@ -131,6 +131,29 @@ class Registrasi extends CI_Controller {
 		$this->mod_registrasi->registrasi_murid($data,'m_user');
 		redirect('dashboard/index/open');
 	}
+
+	public function registrasi_baru_wali_murid()
+	{
+		$nik      = $this->input->post('in_userid');
+		$nama     = $this->input->post('in_nama');
+		$email    = $this->input->post('in_email');
+		$password = $this->input->post('in_password');
+		date_default_timezone_set('Asia/Jakarta');
+		$date = date('Y-m-d h:i:sa');
+
+		$data = array(
+			'user_id'       => $nik,
+			'user_nama'     => $nama,
+			'user_email'    => $email,
+			'user_password' => $password,
+			'is_wali_murid' => '1',
+			'created_date'  => $date,
+			'is_active'     => '1'
+		);
+		$this->mod_registrasi->registrasi_wali_murid($data,'m_user');
+		redirect('dashboard/index/open');
+	}
+
 }
 
 /* End of file Registrasi.php */

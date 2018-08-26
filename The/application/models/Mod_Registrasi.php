@@ -36,6 +36,15 @@ class Mod_Registrasi extends CI_Model {
 			return $this->db->query($query);
 		}
 
+	function registrasi_wali_murid($data,$table)
+		{
+			$this->db->insert($table,$data);
+			$last_id = $this->db->insert_id();
+			
+			$query ="INSERT INTO d_user_role (m_user_id,m_role_id) VALUES ('$last_id','9')";
+			return $this->db->query($query);
+		}
+
 }
 
 /* End of file Mod_Registrasi.php */

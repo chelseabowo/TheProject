@@ -190,7 +190,7 @@ margin-bottom: 10px;
     <div class="col-md-3 col-xs-6" style="text-align:center;">
       <div class="member_image img-responsive"><img src="<?php echo base_url();?>assets/image/04.png" alt=""></div>
       <div class="member_title">Wali Murid</div>
-      <div class="member_btn"><a href="#" class="btn btn-sm btn-success">Daftar</a></div>
+      <div class="member_btn"><a href="#" data-target="#modal_daftar_wali_murid" data-toggle="modal" class="btn btn-sm btn-success">Daftar</a></div>
     </div>
   </div>
 </div>
@@ -414,6 +414,50 @@ margin-bottom: 10px;
   </div>
 </div>
 <!-- Daftar Member Murid -->
+
+<!-- Daftar Member Wali Murid -->
+<div id="modal_daftar_wali_murid" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-sm">
+
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4 class="modal-title" id="myModalLabel">Daftar Wali Murid</h4>
+      </div>
+
+      <div class="modal-body">
+        <form action="<?php echo base_url('registrasi/registrasi_baru_wali_murid'); ?>" method="POST">
+          <div class="form-group has-feedback">
+            <input name="in_nama" type="text" class="form-control" placeholder="Nama Lengkap">
+          </div>
+          <div class="form-group has-feedback">
+            <input name="in_userid" type="text" class="form-control" placeholder="NIK">
+          </div>
+          <div class="form-group has-feedback">
+            <input name="in_email" type="email" class="form-control" placeholder="Email">
+          </div>
+          <div class="form-group has-feedback">
+            <input name="in_password" type="password" id="reg_password" class="form-control" placeholder="Password">
+            <input type='checkbox' id='toggle' value='0' onchange='togglePassword(this);'>
+                &nbsp; <span id='toggleText'>Show</span>
+          </div>
+        
+      <div class="modal-footer">
+        <button class="btn btn-success" type="submit">
+          Submit
+        </button>
+        <button type="reset" class="btn btn-danger"  data-dismiss="modal" aria-hidden="true">
+          Cancel
+        </button>
+      </div>
+      
+        </form>
+      </div> 
+    </div>
+
+  </div>
+</div>
+<!-- Daftar Member Wali Murid -->
 
 <!-- Auto Open Modal -->
 <div id="autoopenmodal" class="modal fade" role="dialog">
