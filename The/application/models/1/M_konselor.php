@@ -28,11 +28,11 @@ class M_konselor extends CI_Model {
 
 	function verifikasi_konselor($where){
 		$query1="UPDATE d_user_role SET is_verified='1' WHERE d_user_role_id='$where[d_user_role_id]'";
-		$query2="SELECT us.m_user_id,us.user_id FROM d_user_role url LEFT JOIN m_user us ON url.m_user_id = us.m_user_id WHERE d_user_role_id='$where[d_user_role_id]'";
-		$a = $this->db->query($query2)->row_array();
-		$query3="UPDATE m_user SET user_id='$a[user_id]-1' WHERE m_user_id='$a[m_user_id]'";
+		//$query2="SELECT us.m_user_id,us.user_id FROM d_user_role url LEFT JOIN m_user us ON url.m_user_id = us.m_user_id WHERE d_user_role_id='$where[d_user_role_id]'";
+		//$a = $this->db->query($query2)->row_array();
+		//$query3="UPDATE m_user SET user_id='$a[user_id]-1' WHERE m_user_id='$a[m_user_id]'";
 		$this->db->query($query1);
-		$this->db->query($query3);
+		//$this->db->query($query3);
 	}
 	function tambah_konselor($data1,$table)
 		{
