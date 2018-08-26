@@ -2,13 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class C_sekolah extends CI_Controller {
-	public function __construct()
-	{
+
+	function __construct(){
 		parent::__construct();
 		$this->load->model('1/M_profil');
 		$this->load->model('1/M_sekolah');
 		$this->load->helper('url');
-
 
 		if($this->session->userdata('status') != "login"){
 			redirect(base_url("dashboard"));
@@ -17,16 +16,30 @@ class C_sekolah extends CI_Controller {
 
 	public function index()
 	{
+	
 		$us                   = $this->session->userdata('user');
 		$where                = array('user_id' => $us );
 		$data['itsme']        = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['content']      = "1/b1_sekolah";
-		// $data['content2']      = "1/edit_data_sekolah";
 		$data['list_sekolah'] = $this->M_sekolah->tampil_sekolah()->result();
 		$data['provinsi']     = $this->M_sekolah->tampil_provinsi()->result();
 		$data['kota']         = $this->M_sekolah->tampil_kota()->result();
 		$data['kecamatan']    = $this->M_sekolah->tampil_kecamatan()->result();
 		$data['kelurahan']    = $this->M_sekolah->tampil_kelurahan()->result();
+		$this->load->view('home',$data);
+	}
+
+	public function sekolah()
+	{
+		$us                   = $this->session->userdata('user');
+		$where                = array('user_id' => $us );
+		$data['itsme']        = $this->M_profil->myprofil('m_user',$where)->row_array();
+		$data['content']      = "1/b1_sekolah";
+		$data['list_sekolah'] = $this->data_sekolah->tampil_sekolah()->result();
+		$data['provinsi']     = $this->data_sekolah->tampil_provinsi()->result();
+		$data['kota']         = $this->data_sekolah->tampil_kota()->result();
+		$data['kecamatan']    = $this->data_sekolah->tampil_kecamatan()->result();
+		$data['kelurahan']    = $this->data_sekolah->tampil_kelurahan()->result();
 		$this->load->view('home', $data);
 	}
 
@@ -36,11 +49,11 @@ class C_sekolah extends CI_Controller {
 		$where = array('user_id' => $us );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$created_by = $this->M_profil->myprofil('m_user',$where)->row_array();
-		
+
 		$nama_sekolah = $this->input->post('in_nama_sekolah');
 		$id_sekolah   = $this->input->post('in_id_sekolah');
 		$alamat       = $this->input->post('in_alamat');
-		$no_telp      = $this->input->post('in_no_hp');
+		$no_telp      = $this->input->post('in_no_telp');
 		$provinsi     = $this->input->post('in_provinsi');
 		$kota         = $this->input->post('in_kota');
 		$kecamatan    = $this->input->post('in_kecamatan');
@@ -70,36 +83,23 @@ class C_sekolah extends CI_Controller {
 		redirect('1/C_sekolah');
 	}
 
-	// public function tampil_modal($d_sekolah_id){
-	// 	$us = $this->session->userdata('user');
-	// 	$where = array('user_id' => $us );
-	// 	$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-
-	// 	$where = array('d_sekolah_id' => $d_sekolah_id );
-	// 	$data['edit'] = $this->M_sekolah->edit_sekolah('d_sekolah',$where)->row_array();
-	// 	$data['list_sekolah'] = $this->M_sekolah->tampil_sekolah()->result();
-	// 	$data['provinsi']     = $this->M_sekolah->tampil_provinsi()->result();
-	// 	$data['kota']         = $this->M_sekolah->tampil_kota()->result();
-	// 	$data['kecamatan']    = $this->M_sekolah->tampil_kecamatan()->result();
-	// 	$data['kelurahan']    = $this->M_sekolah->tampil_kelurahan()->result();
-	// 	$this->load->view('1/edit_data_sekolah',$data);
-	// }
+	
 
 	public function update_sekolah(){
-		// $us = $this->session->userdata('user');
+// $us = $this->session->userdata('user');
 		// $where = array('user_id' => $us );
 		// // $data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		// $updated_by = $this->M_profil->myprofil('m_user',$where)->row_array();
 
-		$id  	      = $this->input->post('d_sekolah_id');
-		$nama_sekolah = $this->input->post('sekolah_nama');
-		$id_sekolah   = $this->input->post('sekolah_id');
-		$alamat       = $this->input->post('sekolah_alamat');
-		$no_telp      = $this->input->post('sekolah_no_telp');
-		$provinsi     = $this->input->post('m_provinsi_id');
-		$kota         = $this->input->post('m_kota_id');
-		$kecamatan    = $this->input->post('m_kecamatan_id');
-		$kelurahan    = $this->input->post('m_kelurahan_id');
+		$id  	      = $this->input->post('in_sekolah_id');
+		$nama_sekolah = $this->input->post('in_nama_sekolah');
+		$id_sekolah   = $this->input->post('in_id_sekolah');
+		$alamat       = $this->input->post('in_alamat');
+		$no_telp      = $this->input->post('in_no_telp');
+		$provinsi     = $this->input->post('in_provinsi');
+		$kota         = $this->input->post('in_kota');
+		$kecamatan    = $this->input->post('in_kecamatan');
+		$kelurahan    = $this->input->post('in_kelurahan');
 		$updated_by   = $this->input->post('in_updated_by');
 		date_default_timezone_set('Asia/Jakarta');
 		$date = date('Y-m-d h:i:sa');
@@ -122,9 +122,27 @@ class C_sekolah extends CI_Controller {
 		$this->M_sekolah->update_sekolah($where,$data,'d_sekolah');
 		redirect('1/C_sekolah');
 	}
+	public function tampil_modal($d_sekolah_id){
+		$us = $this->session->userdata('user');
+		$where = array('user_id' => $us );
+		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
+
+		$where = array('d_sekolah_id' => $d_sekolah_id );
+		$data['edit'] = $this->data_sekolah->edit_sekolah('d_sekolah',$where)->row_array();
+		$data['list_sekolah'] = $this->data_sekolah->tampil_sekolah()->result();
+		$data['provinsi']     = $this->data_sekolah->tampil_provinsi()->result();
+		$data['kota']         = $this->data_sekolah->tampil_kota()->result();
+		$data['kecamatan']    = $this->data_sekolah->tampil_kecamatan()->result();
+		$data['kelurahan']    = $this->data_sekolah->tampil_kelurahan()->result();
+		$this->load->view('1/edit_data_sekolah',$data);
+	}
 	function edit_sekolah($d_sekolah_id){
+		$us = $this->session->userdata('user');
+		$where = array('user_id' => $us );
+		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
+
 		$where = array('d_sekolah_id' => $d_sekolah_id);
-		$data['d_sekolah'] = $this->M_sekolah->edit_sekolah($where,'d_sekolah')->result();
+		$data['edit'] = $this->M_sekolah->edit_sekolah($where,'d_sekolah')->row_array();
 		$data['provinsi']     = $this->M_sekolah->tampil_provinsi()->result();
 		$data['kota']         = $this->M_sekolah->tampil_kota()->result();
 		$data['kecamatan']    = $this->M_sekolah->tampil_kecamatan()->result();
@@ -132,9 +150,3 @@ class C_sekolah extends CI_Controller {
 		$this->load->view('1/edit_data_sekolah',$data);
 	}
 }
-
-	
-
-
-/* End of file C_sekolah.php */
-/* Location: ./application/controllers/1/C_sekolah.php */

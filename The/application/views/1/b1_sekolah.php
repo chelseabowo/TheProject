@@ -1,78 +1,66 @@
- <div class="row">
-        <div class="col-lg-6">
-          <h3><b>Daftar Sekolah</b></h3>
-          <a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Data Sekolah</a>
-          </br></br>
-        </div>
-
-
-          </div>
-
-          
-          
-        </div>
-</div>
-
+<h3><b>Daftar Sekolah</b></h3>
+<a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Data Sekolah</a>
+</br></br>
 
 <div class='table-responsive' style="background-color:#E3FB71;">
-	</br>
-	<table id="myTable" class='table table-bordered' syle="color:#CDF76F">
-		<thead>
-			<tr style="background-color:#906CD7;">
-				<th style="color:#CDF76F;" width="3%">NO.</th>
-				<th style="color:#CDF76F;" width="17%">Nama Sekolah</th>
-				<th style="color:#CDF76F;" width="10%">ID Sekolah</th>
-				<th style="color:#CDF76F;" width="10%">Alamat Sekolah</th>
-				<th style="color:#CDF76F;" width="10%">No Telp</th>
-				<th style="color:#CDF76F;" width="10%">Provinsi</th>
-				<th style="color:#CDF76F;" width="10%">Kota/Kab.</th>
-				<th style="color:#CDF76F;" width="10%">Kecamatan</th>
-				<th style="color:#CDF76F;" width="10%">Kelurahan</th>
-				<th style="color:#CDF76F;" width="10%">Opsi</th>
-			</tr>
-		</thead>
-		<tbody>
-			<?php 
-				$no=1;
-				foreach ($list_sekolah as $ls) {
-			?>
-			<tr style="background-color:#F7FFE6;">
-				<td><?php echo $no++ ?></td>
-				<td><?php echo $ls->sekolah_nama; ?></td>
-				<td><?php echo $ls->sekolah_id; ?></td>
-				<td><?php echo $ls->sekolah_alamat; ?></td>
-				<td><?php echo $ls->sekolah_no_telp; ?></td>
-				<td><?php echo $ls->provinsi_nama; ?></td>
-				<td><?php echo $ls->kota_nama; ?></td>
-				<td><?php echo $ls->kecamatan_nama; ?></td>
-				<td><?php echo $ls->kelurahan_nama; ?></td>
-				<td>
+  </br>
+  <table id="myTable" class='table table-bordered' syle="color:#CDF76F">
+    <thead>
+      <tr style="background-color:#906CD7;">
+        <th style="color:#CDF76F;">NO.</th>
+        <th style="color:#CDF76F;">Nama Sekolah</th>
+        <th style="color:#CDF76F;">ID Sekolah</th>
+        <th style="color:#CDF76F;">Alamat Sekolah</th>
+        <th style="color:#CDF76F;">No Telp</th>
+        <th style="color:#CDF76F;">Provinsi</th>
+        <th style="color:#CDF76F;">Kota/Kab.</th>
+        <th style="color:#CDF76F;">Kecamatan</th>
+        <th style="color:#CDF76F;">Kelurahan</th>
+        <th style="color:#CDF76F;">Opsi</th>
+      </tr>
+    </thead>
+    <tbody>
+      <?php 
+        $no=1;
+        foreach ($list_sekolah as $ls) {
+      ?>
+      <tr style="background-color:#F7FFE6;">
+        <td><?php echo $no++ ?></td>
+        <td><?php echo $ls->sekolah_nama; ?></td>
+        <td><?php echo $ls->sekolah_id; ?></td>
+        <td><?php echo $ls->sekolah_alamat; ?></td>
+        <td><?php echo $ls->sekolah_no_telp; ?></td>
+        <td><?php echo $ls->provinsi_nama; ?></td>
+        <td><?php echo $ls->kota_nama; ?></td>
+        <td><?php echo $ls->kecamatan_nama; ?></td>
+        <td><?php echo $ls->kelurahan_nama; ?></td>
+       <td>
           <!-- <?php echo anchor ('1/C_sekolah/edit_sekolah/'.$ls->d_sekolah_id,'EDIT') ;?> -->
-					<a class="btn btn-success btn-xs" href="#edit_data_sekolah" data-toggle="modal" data-id="<?php echo $ls->d_sekolah_id;?>">Edit</a>
-					&nbsp;
-					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_modal('<?php echo base_url('1/C_sekolah/hapus_sekolah/'); echo $ls->d_sekolah_id; ?>');">Hapus</a>
-				</td>
-			</tr>
-			<?php } ?>
-		</tbody>
-	</table>
-	</br>
+          <a class="btn btn-success btn-xs" href="#edit_data_sekolah" data-toggle="modal" data-id="<?php echo $ls->d_sekolah_id;?>">Edit</a>
+          &nbsp;
+          <a class="btn btn-danger btn-xs" href="#" onclick="confirm_modal('<?php echo base_url('1/C_sekolah/hapus_sekolah/'); echo $ls->d_sekolah_id; ?>');">Hapus</a>
+        </td>
+      </tr>
+      <?php } ?>
+    </tbody>
+  </table>
+  </br>
 </div>
 
 <!-- Edit Data Sekolah -->
 <div class="modal fade" id="edit_data_sekolah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-	<div class="modal-dialog" role="document">
+  <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
                 <h4 class="modal-title">Edit Data Sekolah</h4>
             </div>
             <div class="modal-body">
-                <div class="hasil-data1"></div>
+                <div class="hasil-data"></div>
             </div>
             
         </div>
-	</div>
+  </div>
 </div>
 <!-- Edit Data Sekolah -->
 
@@ -107,74 +95,74 @@
       <div class="modal-body">
         <form action="<?php echo base_url('1/C_sekolah/tambah_sekolah'); ?>" method="POST">
           <div class="form-group has-feedback">
-          	<label for="">Nama Sekolah</label>
+            <label for="">Nama Sekolah</label>
             <input name="in_nama_sekolah" type="text" class="form-control" placeholder="Nama Sekolah">
           </div>
           <div class="form-group has-feedback">
-          	<label for="">ID Sekolah</label>
+            <label for="">ID Sekolah</label>
             <input name="in_id_sekolah" type="text" class="form-control" placeholder="ID Sekolah">
           </div>
           <div class="form-group has-feedback">
-          	<label for="">Alamat Sekolah</label>
+            <label for="">Alamat Sekolah</label>
             <input name="in_alamat" type="text" class="form-control" placeholder="Alamat Sekolah">
           </div>
           <div class="form-group has-feedback">
-          	<label for="">No. Telpon</label>
-            <input name="in_no_hp" type="text" class="form-control" placeholder="No. Telpon">
+            <label for="">No. Telpon</label>
+            <input name="in_no_telp" type="text" class="form-control" placeholder="No. Telpon">
           </div>
           <div class="form-group has-feedback">
-          	<label for="">Provinsi</label>
-            <select name="in_provinsi" id="provinsi1" class="form-control" required>
-            	<option value="">Please Select</option>
-            	<?php 
-            	foreach ($provinsi as $pro) {
-            	?>
-				      <option value="<?php echo $pro->m_provinsi_id;?>"><?php echo $pro->provinsi_nama; ?></option>
-            	<?php	
-            	}
-            	?>
+            <label for="">Provinsi</label>
+            <select name="in_provinsi" id="provinsi" class="form-control" required>
+              <option value="">Please Select</option>
+              <?php 
+              foreach ($provinsi as $pro) {
+              ?>
+              <option value="<?php echo $pro->m_provinsi_id;?>"><?php echo $pro->provinsi_nama; ?></option>
+              <?php 
+              }
+              ?>
             </select>
           </div>
           <div class="form-group has-feedback">
-          	<label for="">Kota/Kabupaten</label>
-            <select name="in_kota" id="kota1" class="form-control" requiered>
-            	<option value="">Please Select</option>
-            	<?php
-            	foreach ($kota as $kt) {
-            	?>
-				      <option id='kota' class="<?php echo $kt->m_provinsi_id ?>" value="<?php echo $kt->m_kota_id ?>"><?php echo $kt->kota_nama ?>
+            <label for="">Kota/Kabupaten</label>
+            <select name="in_kota" id="kota" class="form-control" requiered>
+              <option value="">Please Select</option>
+              <?php
+              foreach ($kota as $kt) {
+              ?>
+              <option id='kota' class="<?php echo $kt->m_provinsi_id ?>" value="<?php echo $kt->m_kota_id ?>"><?php echo $kt->kota_nama ?>
               </option>
-            	<?php
-            	}
-            	?>
+              <?php
+              }
+              ?>
             </select>
           </div>
           <div class="form-group has-feedback">
-          	<label for="">Kecamatan</label>
-            <select name="in_kecamatan" id="kecamatan1" class="form-control" requiered>
-            	<option value="">Please Select</option>
-            	<?php
-            	foreach ($kecamatan as $kc) {
-            	?>
-				      <option id='kecamatan' class="<?php echo $kc->m_kota_id ?>" value="<?php echo $kc->m_kecamatan_id ?>"><?php echo $kc->kecamatan_nama ?>
-				      </option>
-            	<?php
-            	}
-            	?>
+            <label for="">Kecamatan</label>
+            <select name="in_kecamatan" id="kecamatan" class="form-control" requiered>
+              <option value="">Please Select</option>
+              <?php
+              foreach ($kecamatan as $kc) {
+              ?>
+              <option id='kecamatan' class="<?php echo $kc->m_kota_id ?>" value="<?php echo $kc->m_kecamatan_id ?>"><?php echo $kc->kecamatan_nama ?>
+              </option>
+              <?php
+              }
+              ?>
             </select>
           </div>
           <div class="form-group has-feedback">
-          	<label for="">Kelurahan</label>
-            <select name="in_kelurahan" id="kelurahan1" class="form-control" requiered>
-            	<option value="">Please Select</option>
-            	<?php
-            	foreach ($kelurahan as $kl) {
-            	?>
+            <label for="">Kelurahan</label>
+            <select name="in_kelurahan" id="kelurahan" class="form-control" requiered>
+              <option value="">Please Select</option>
+              <?php
+              foreach ($kelurahan as $kl) {
+              ?>
               <option id='kelurahan' class="<?php echo $kl->m_kecamatan_id ?>" value="<?php echo $kl->m_kelurahan_id ?>"><?php echo $kl->kelurahan_nama ?>
-				      </option>
-            	<?php
-            	}
-            	?>
+              </option>
+              <?php
+              }
+              ?>
             </select>
           </div>
           <div class="form-group has-feedback">
@@ -195,14 +183,6 @@
   </div>
 </div>
 <!-- Tambah Data Sekolah -->
-<!-- Auto Dropdown Changed -->
-<script src="<?php echo base_url(); ?>assets/admin/jquery.chained.min.js"></script>
-<script>
-    $("#kota1").chained("#provinsi1");
-    $("#kecamatan1").chained("#kota1");
-    $("#kelurahan1").chained("#kecamatan1");
-</script>
-<!-- Auto Dropdown Changed -->
 <!-- Edit Data Sekolah -->
 <script type="text/javascript">
     $(document).ready(function(){
@@ -214,10 +194,10 @@
                 type : 'post',
                 url  : '<?php echo base_url('1/C_sekolah/edit_sekolah/');?>'+ idx,
                 success : function(data){
-                $('.hasil-data1').html(data);//menampilkan data ke dalam modal
+                $('.hasil-data').html(data);//menampilkan data ke dalam modal
                 }
             });
          });
     });
 </script>
-
+<!-- Edit Data Sekolah -->

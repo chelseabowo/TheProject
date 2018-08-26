@@ -213,15 +213,7 @@ $('#myTable').DataTable();
 </script>
 <!-- Hapus Data Sekolah -->
 
-<!-- Hapus Data Sekolah -->
-<script type="text/javascript">
-    function confirm_hapus_admin_sekolah(delete_url)
-    {
-      $('#modal_hapus_data_admin_sekolah').modal('show', {backdrop: 'static'});
-      document.getElementById('delete_link').setAttribute('href' , delete_url);
-    }
-</script>
-<!-- Hapus Data Sekolah -->
+<!--  -->
 
 </body>
 </html>
