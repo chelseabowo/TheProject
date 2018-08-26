@@ -9,7 +9,8 @@ class M_kelas extends CI_Model {
 		$query = "
 			SELECT
 			kl.d_kelas_id,
-			kl.kelas_nama
+			kl.kelas_nama,
+			kl.kelas_id
 			FROM m_user us
 			LEFT JOIN d_user_role ur ON us.m_user_id = ur.m_user_id
 			LEFT JOIN d_kelas kl ON ur.d_sekolah_id = kl.d_sekolah_id
