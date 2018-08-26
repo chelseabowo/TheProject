@@ -98,13 +98,13 @@
                     </a>
                     <ul class="sub">
                         <li><a href="<?php echo base_url('1/C_admin_sekolah'); ?>">Admin Sekolah</a></li>
-                        <li><a href="#">Kepala Sekolah</a></li>
-                        <li><a href="#">Konselor</a></li>
-                        <li><a href="#">Guru BK</a></li>
-                        <li><a href="#">Guru Mapel</a></li>
-                        <li><a href="#">Wali Kelas</a></li>
-                        <li><a href="#">Murid</a></li>
-                        <li><a href="#">Wali Murid</a></li>
+                        <li><a href="<?php echo base_url('1/C_kepala_sekolah'); ?>">Kepala Sekolah</a></li>
+                        <li><a href="<?php echo base_url('1/C_konselor'); ?>">Konselor</a></li>
+                        <li><a href="<?php echo base_url('1/C_gurubk'); ?>">Guru BK</a></li>
+                        <li><a href="<?php echo base_url('1/C_guru_mapel'); ?>">Guru Mapel</a></li>
+                        <li><a href="<?php echo base_url('1/C_wali_kelas'); ?>">Wali Kelas</a></li>
+                        <li><a href="<?php echo base_url('1/C_murid'); ?>">Murid</a></li>
+                        <li><a href="<?php echo base_url('1/C_wali_murid'); ?>">Wali Murid</a></li>
                     </ul>
                 </li>
             </ul>            

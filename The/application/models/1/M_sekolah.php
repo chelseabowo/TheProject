@@ -74,13 +74,13 @@ class M_sekolah extends CI_Model {
 
 	function edit_sekolah($table,$where)
 	{
-		return $this->db->get_where($table,$where);
+		return $this->db->get_where($where,$table);
 	}
 
-	function update_sekolah($where_sekolah,$data_sekolah,$table)
+	function update_sekolah($where,$data,$table)
 	{
-		$this->db->where($where_sekolah);
-		$this->db->update($table, $data_sekolah);
+		$this->db->where($where);
+		$this->db->update($table,$data);
 	}
 
 }

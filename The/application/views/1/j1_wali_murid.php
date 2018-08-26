@@ -1,5 +1,5 @@
-<h3><b>Daftar Admin Sekolah</b></h3>
-<a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Data Admin Sekolah</a>
+<h3><b>Daftar Wali murid</b></h3>
+<a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Wali murid</a>
 </br></br>
 
 <div class='table-responsive' style="background-color:#E3FB71;">
@@ -34,18 +34,18 @@
 				<?php 
 				if($as->status=='VERIFIED'){
 				?>
-					<a class="btn btn-success btn-xs" href="#edit_data_admin_sekolah" data-toggle="modal" data-id="<?php echo $as->m_user_id;?>">Edit</a>
+					<a class="btn btn-success btn-xs" href="#edit_data_wali_murid" data-toggle="modal" data-id="<?php echo $as->m_user_id;?>">Edit</a>
 					&nbsp;<!-- 
-          <a class="btn btn-danger btn-xs" href="#" onclick="confirm_modal('<?php echo base_url('1/C_sekolah/hapus_admin_sekolah/'); echo $ls->d_sekolah_id; ?>');">Hapus</a> -->
-					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_hapus_admin_sekolah('<?php echo base_url ('1/C_admin_sekolah/hapus_admin_sekolah/'); echo $as->m_user_id; ?>');">Hapus</a>
+          <a class="btn btn-danger btn-xs" href="#" onclick="confirm_modal('<?php echo base_url('1/C_wali_murid/hapus_koselor/'); echo $ls->d_sekolah_id; ?>');">Hapus</a> -->
+					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_hapus_admin_sekolah('<?php echo base_url ('1/C_wali_murid/hapus_wali_murid/'); echo $as->m_user_id; ?>');">Hapus</a>
 				<?php	
 				}else{
 				?>
-					<a class="btn btn-info btn-xs" href="#" onclick="confirm_verifikasi_admin_sekolah('C_admin_sekolah/verifikasi_admin_sekolah/<?php echo $as->d_user_role_id; ?>');">Verifikasi</a>
+					<a class="btn btn-info btn-xs" href="#" onclick="confirm_verifikasi_admin_sekolah('C_wali_murid/verifikasi_wali_murid/<?php echo $as->d_user_role_id; ?>');">Verifikasi</a>
 					&nbsp;
-					<a class="btn btn-success btn-xs" href="#edit_data_admin_sekolah" data-toggle="modal" data-id="<?php echo $as->m_user_id;;?>">Edit</a>
+					<a class="btn btn-success btn-xs" href="#edit_data_wali_murid" data-toggle="modal" data-id="<?php echo $as->m_user_id;?>">Edit</a>
 					&nbsp;
-					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_hapus_admin_sekolah('<?php echo base_url ('1/C_admin_sekolah/hapus_admin_sekolah/'); echo $as->m_user_id; ?>');">Hapus</a>
+					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_hapus_admin_sekolah('<?php echo base_url ('1/C_wali_murid/hapus_wali_murid/'); echo $as->m_user_id; ?>');">Hapus</a>
 				<?php } ?>
 				</td>
 			</tr>
@@ -56,15 +56,15 @@
 </div>
 
 <!-- Edit Data Sekolah -->
-<div class="modal fade" id="edit_data_admin_sekolah" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+<div class="modal fade" id="edit_data_wali_murid" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
                 <button type="button" class="close" data-dismiss="modal">&times;</button>
-                <h4 class="modal-title">Edit Data Sekolah</h4>
+                <h4 class="modal-title">Edit Wali murid</h4>
             </div>
             <div class="modal-body">
-                <div class="hasil-data"></div>
+                <div class="hasil-data6"></div>
             </div>
             
         </div>
@@ -116,11 +116,11 @@
 
       <div class="modal-header">
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
-        <h4 class="modal-title" id="myModalLabel">Tambah Admin Sekolah</h4>
+        <h4 class="modal-title" id="myModalLabel">Tambah wali Murid</h4>
       </div>
 
       <div class="modal-body">
-         <form action="<?php echo base_url('1/C_admin_sekolah/tambah_baru_admin'); ?>" method="POST">
+         <form action="<?php echo base_url('1/C_wali_murid/tambah_baru_wali_murid'); ?>" method="POST">
           <div class="form-group has-feedback">
             <label> Nama Lengkap</label>
             <input name="in_nama" type="text" class="form-control" placeholder="Nama Lengkap">
@@ -194,15 +194,15 @@
 <!-- Edit Data Sekolah -->
 <script type="text/javascript">
     $(document).ready(function(){
-        $('#edit_data_admin_sekolah').on('show.bs.modal', function (e) {
+        $('#edit_data_wali_murid').on('show.bs.modal', function (e) {
             var idx = $(e.relatedTarget).data('id');
       
             //menggunakan fungsi ajax untuk pengambilan data
             $.ajax({
                 type : 'post',
-                url  : '<?php echo base_url('1/C_admin_sekolah/edit_admin_sekolah/');?>'+ idx,
+                url  : '<?php echo base_url('1/C_wali_murid/edit_wali_murid/');?>'+ idx,
                 success : function(data){
-                $('.hasil-data').html(data);//menampilkan data ke dalam modal
+                $('.hasil-data6').html(data);//menampilkan data ke dalam modal
                 }
             });
          });

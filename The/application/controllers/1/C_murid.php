@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_admin_sekolah extends CI_Controller {
+class C_murid extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('1/M_profil');
-		$this->load->model('1/M_admin_sekolah');
+		$this->load->model('1/M_murid');
 		$this->load->helper('url');
 
 		if($this->session->userdata('status') != "login"){
@@ -20,24 +20,24 @@ class C_admin_sekolah extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_admin_sekolah->all_admin()->result();
-		$data['content'] ="1/c1_admin_sekolah";
+		$data['a_s'] = $this->M_murid->all_admin()->result();
+		$data['content'] ="1/i1_murid";
 		$this->load->view('Home',$data);
 	}
 
-	public function verifikasi_admin_sekolah($d_user_role_id){
+	public function verifikasi_murid($d_user_role_id){
 		$where = array('d_user_role_id' => $d_user_role_id );
-		$this->M_admin_sekolah->verifikasi_admin_sekolah($where);
-		redirect('1/C_admin_sekolah');
+		$this->M_murid->verifikasi_murid($where);
+		redirect('1/C_murid');
 	}
 
-	public function tambah_baru_admin()
+	public function tambah_baru_murid()
 	{
 		$nip      = $this->input->post('in_userid');
 		$nama     = $this->input->post('in_nama');
 		$email    = $this->input->post('in_email');
 		$password = $this->input->post('in_password');
-		$isadmin  = 1;
+		$ismurid  = 1;
 		date_default_timezone_set('Asia/Jakarta');
 		$date = date('Y-m-d h:i:sa');
 
@@ -46,25 +46,25 @@ class C_admin_sekolah extends CI_Controller {
 			'user_nama'     => $nama, 
 			'user_email'    => $email,
 			'user_password' => $password,
-			'is_admin'      => $isadmin,
+			'is_murid'      => $ismurid,
 			'created_date'  => $date,
 			'is_active'     => '1'
 		);
-		$this->M_admin_sekolah->tambah_admin($data1,'m_user');
-		redirect('1/C_admin_sekolah');
+		$this->M_murid->tambah_murid($data1,'m_user');
+		redirect('1/C_murid');
 	}
-	public function hapus_admin_sekolah($m_user_id){
+	public function hapus_murid($m_user_id){
 		$where = array('m_user_id' => $m_user_id );
-		$this->M_admin_sekolah->hapus_admin_sekolah($where);
-		redirect('1/C_admin_sekolah');
+		$this->M_murid->hapus_murid($where);
+		redirect('1/C_murid');
 	}
-	function edit_admin_sekolah($m_user_id){
+	function edit_murid($m_user_id){
 		$where = array('m_user_id' => $m_user_id);
-		$data['m_user'] = $this->M_admin_sekolah->edit_admin_sekolah($where,'m_user')->result();
+		$data['m_user'] = $this->M_murid->edit_murid($where,'m_user')->result();
 		
-		$this->load->view('1/edit_data_admin_sekolah',$data);
+		$this->load->view('1/edit_data_murid',$data);
 	}
-	public function update_admin_sekolah(){
+	public function update_murid(){
 		// $us = $this->session->userdata('user');
 		// $where = array('user_id' => $us );
 		// // $data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
@@ -99,8 +99,8 @@ class C_admin_sekolah extends CI_Controller {
 		$where = array (
 			'm_user_id' => $m_user_id 
 		);
-		$this->M_admin_sekolah->update_admin_sekolah($where,$data,'m_user');
-		redirect('1/C_admin_sekolah');
+		$this->M_murid->update_murid($where,$data,'m_user');
+		redirect('1/C_murid');
 	}
 
 }

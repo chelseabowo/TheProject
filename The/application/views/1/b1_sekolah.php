@@ -1,6 +1,18 @@
-<h3><b>Daftar Sekolah</b></h3>
-<a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Data Sekolah</a>
-</br></br>
+ <div class="row">
+        <div class="col-lg-6">
+          <h3><b>Daftar Sekolah</b></h3>
+          <a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Data Sekolah</a>
+          </br></br>
+        </div>
+
+
+          </div>
+
+          
+          
+        </div>
+</div>
+
 
 <div class='table-responsive' style="background-color:#E3FB71;">
 	</br>
@@ -35,7 +47,8 @@
 				<td><?php echo $ls->kecamatan_nama; ?></td>
 				<td><?php echo $ls->kelurahan_nama; ?></td>
 				<td>
-					<a class="btn btn-success btn-xs" href="#edit_data_sekolah" data-toggle="modal" data-id="<?php echo $ls->d_sekolah_id; ?>">Edit</a>
+          <!-- <?php echo anchor ('1/C_sekolah/edit_sekolah/'.$ls->d_sekolah_id,'EDIT') ;?> -->
+					<a class="btn btn-success btn-xs" href="#edit_data_sekolah" data-toggle="modal" data-id="<?php echo $ls->d_sekolah_id;?>">Edit</a>
 					&nbsp;
 					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_modal('<?php echo base_url('1/C_sekolah/hapus_sekolah/'); echo $ls->d_sekolah_id; ?>');">Hapus</a>
 				</td>
@@ -55,7 +68,7 @@
                 <h4 class="modal-title">Edit Data Sekolah</h4>
             </div>
             <div class="modal-body">
-                <div class="hasil-data"></div>
+                <div class="hasil-data1"></div>
             </div>
             
         </div>
@@ -107,11 +120,11 @@
           </div>
           <div class="form-group has-feedback">
           	<label for="">No. Telpon</label>
-            <input name="in_no_telp" type="text" class="form-control" placeholder="No. Telpon">
+            <input name="in_no_hp" type="text" class="form-control" placeholder="No. Telpon">
           </div>
           <div class="form-group has-feedback">
           	<label for="">Provinsi</label>
-            <select name="in_provinsi" id="provinsi" class="form-control" required>
+            <select name="in_provinsi" id="provinsi1" class="form-control" required>
             	<option value="">Please Select</option>
             	<?php 
             	foreach ($provinsi as $pro) {
@@ -124,7 +137,7 @@
           </div>
           <div class="form-group has-feedback">
           	<label for="">Kota/Kabupaten</label>
-            <select name="in_kota" id="kota" class="form-control" requiered>
+            <select name="in_kota" id="kota1" class="form-control" requiered>
             	<option value="">Please Select</option>
             	<?php
             	foreach ($kota as $kt) {
@@ -138,7 +151,7 @@
           </div>
           <div class="form-group has-feedback">
           	<label for="">Kecamatan</label>
-            <select name="in_kecamatan" id="kecamatan" class="form-control" requiered>
+            <select name="in_kecamatan" id="kecamatan1" class="form-control" requiered>
             	<option value="">Please Select</option>
             	<?php
             	foreach ($kecamatan as $kc) {
@@ -152,7 +165,7 @@
           </div>
           <div class="form-group has-feedback">
           	<label for="">Kelurahan</label>
-            <select name="in_kelurahan" id="kelurahan" class="form-control" requiered>
+            <select name="in_kelurahan" id="kelurahan1" class="form-control" requiered>
             	<option value="">Please Select</option>
             	<?php
             	foreach ($kelurahan as $kl) {
@@ -182,3 +195,29 @@
   </div>
 </div>
 <!-- Tambah Data Sekolah -->
+<!-- Auto Dropdown Changed -->
+<script src="<?php echo base_url(); ?>assets/admin/jquery.chained.min.js"></script>
+<script>
+    $("#kota1").chained("#provinsi1");
+    $("#kecamatan1").chained("#kota1");
+    $("#kelurahan1").chained("#kecamatan1");
+</script>
+<!-- Auto Dropdown Changed -->
+<!-- Edit Data Sekolah -->
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#edit_data_sekolah').on('show.bs.modal', function (e) {
+            var idx = $(e.relatedTarget).data('id');
+      
+            //menggunakan fungsi ajax untuk pengambilan data
+            $.ajax({
+                type : 'post',
+                url  : '<?php echo base_url('1/C_sekolah/edit_sekolah/');?>'+ idx,
+                success : function(data){
+                $('.hasil-data1').html(data);//menampilkan data ke dalam modal
+                }
+            });
+         });
+    });
+</script>
+
