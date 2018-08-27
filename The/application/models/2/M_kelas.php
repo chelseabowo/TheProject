@@ -23,6 +23,23 @@ class M_kelas extends CI_Model {
 	{
 		$this->db->insert($table, $data);
 	}
+	function hapus_kelas($where,$table)
+	{
+		$this->db->where($where);
+		$this->db->delete($table);
+	}
+
+	function edit_kelas($table,$where)
+	{
+		return $this->db->get_where($where,$table);
+	}
+
+	function update_sekolah($where,$data,$table)
+	{
+		$this->db->where($where);
+		$this->db->update($table,$data);
+	}
+
 
 }
 

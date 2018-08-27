@@ -25,8 +25,10 @@
 				<td><?php echo $kl->kelas_id; ?></td>
 				<td></td>
 				<td>
-					<a href="">Edit</a>
-					<a class="btn btn-danger btn-xs" href="#" onclick="confirm_delete('<?php echo base_url('2/C_kelas/hapus_kelas/'); echo $kl->d_kelas_id; ?>');">Hapus</a>
+					 <!-- <?php echo anchor ('1/C_sekolah/edit_sekolah/'.$ls->d_sekolah_id,'EDIT') ;?> -->
+          <a class="btn btn-success btn-xs" href="#edit_data_kelas" data-toggle="modal" data-id="<?php echo $kl->d_kelas_id;?>">Edit</a>
+          &nbsp;
+          <a class="btn btn-danger btn-xs" href="#" onclick="confirm_modal('<?php echo base_url('2/C_kelas/hapus_kelas/'); echo $kl->d_kelas_id; ?>');">Hapus</a>
 				</td>
 			</tr>
 			<?php } ?>
@@ -34,24 +36,23 @@
 	</table>
 	</br>
 </div>
-
-<!-- Verifikasi Data Admin Sekolah --> 
-<div class="modal fade" id="modal_verifikasi_data_admin_sekolah">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-        <h4 class="modal-title" style="text-align:center;">Apakah anda yakin akan memverifikasi data ini ?</h4>
-      </div>
-                
-      <div class="modal-footer" style="margin:0px; border-top:0px; text-align:center;">
-        <a href="#" class="btn btn-danger" id="delete_link">Ya</a>
-        <button type="button" class="btn btn-success" data-dismiss="modal">Tidak</button>
-      </div>
-    </div>
+<!-- Edit Data Sekolah -->
+<div class="modal fade" id="edit_data_kelas" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h4 class="modal-title">Edit Data kelas</h4>
+            </div>
+            <div class="modal-body">
+                <div class="hasil-data"></div>
+            </div>
+            
+        </div>
   </div>
 </div>
-<!-- Verifikasi Admin Sekolah -->
+<!-- Edit Data Sekolah -->
+
 
 <!-- Hapus Data Kelas -->
 <script type="text/javascript">
@@ -64,7 +65,7 @@
 <!-- Hapus Data Kelas -->
 
 <!-- Hapus Data Kelas --> 
-<div class="modal fade" id="modal_hapus_data_kelas">
+<div class="modal fade" id="modal_hapus_data_sekolah">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -131,3 +132,20 @@ function findstopclass(){
 clearInterval(interval);}
 </script>
 <!-- Find ID Kelas -->
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#edit_data_kelas').on('show.bs.modal', function (e) {
+            var idx = $(e.relatedTarget).data('id');
+      
+            //menggunakan fungsi ajax untuk pengambilan data
+            $.ajax({
+                type : 'post',
+                url  : '<?php echo base_url('2/C_kelas/edit_kelas/');?>'+ idx,
+                success : function(data){
+                $('.hasil-data').html(data);//menampilkan data ke dalam modal
+                }
+            });
+         });
+    });
+</script>

@@ -6,7 +6,7 @@ class C_kelas extends CI_Controller {
 	{
 		parent::__construct();
 		$this->load->model('2/M_profil');
-		$this->load->model('2/M_sekolah');
+
 		$this->load->model('2/M_kelas');
 		$this->load->helper('url');
 
@@ -49,6 +49,20 @@ class C_kelas extends CI_Controller {
 		$this->M_kelas->tambah_kelas($data,'d_kelas');
 		redirect('2/C_kelas/index');
 		
+	}
+	function edit_kelas($d_kelas_id){
+		$us = $this->session->userdata('user');
+		$where = array('user_id' => $us );
+		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
+
+		$where = array('d_kelas_id' => $d_kelas_id);
+		$data['edit'] = $this->M_kelas->edit_kelas($where,'d_kelas')->row_array();
+		$this->load->view('2/edit_data_kelas',$data);
+	}
+	public function hapus_kelas($d_kelas_id){
+		$where = array('d_kelas_id' => $d_kelas_id );
+		$this->M_kelas->hapus_kelas($where,'d_kelas');
+		redirect('2/C_kelas');
 	}
 
 }
