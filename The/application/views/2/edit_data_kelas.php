@@ -1,11 +1,16 @@
-<form action="<?php echo base_url('2/C_kelas/tambah_kelas'); ?>" method="POST" name="kelas">
+<form action="<?php echo base_url('2/C_kelas/update_kelas'); ?>" method="POST" name="kelas_edit">
           <div class="form-group has-feedback">
+            <input name="in_kelas_id" type="hidden" class="form-control" value="<?php echo $edit['d_kelas_id'] ?>">
             <label for="">Nama Kelas</label>
-            <input name="in_nama_kelas" type="text" class="form-control"  onFocus="findstart();" onBlur="findstop();">
+            <input name="in_nama_kelas_edit" type="text" class="form-control"  onFocus="findstart_edit();" onBlur="findstop_edit();" value="<?php echo $edit['kelas_nama'] ?>">
           </div>
           <div class="form-group has-feedback">
             <label for="">ID Kelas</label>
-            <input name="in_id_kelas" type="text" class="form-control" readonly>
+            <input name="in_id_kelas_edit" type="text" class="form-control" value="<?php echo $edit['kelas_id'] ?>" readonly>
+          </div>
+          <div class="form-group has-feedback">
+            <label for="">Wali Kelas</label>
+            <input name="in_wali_kelas_edit" type="text" class="form-control" >
           </div>
       <div class="modal-footer">
         <button class="btn btn-success" type="submit">
@@ -20,15 +25,15 @@
 
 <!-- Find ID Sekolah -->
 <script> 
-function findstart(){
-interval = setInterval("find()",1);}
-function find(){
-var in_s = document.kelas.in_nama_kelas.value;
-var hasil = in_s.split(" ").join("");
+function findstart_edit(){
+interval = setInterval("find_edit()",1);}
+function find_edit(){
+var in_s_edit = document.kelas_edit.in_nama_kelas_edit.value;
+var hasil_edit = in_s_edit.split(" ").join("");
 
-document.kelas.in_id_kelas.value = hasil.toUpperCase();
+document.kelas_edit.in_id_kelas_edit.value = hasil_edit.toUpperCase();
 }
-function findstop(){
+function findstop_edit(){
 clearInterval(interval);}
 </script>
 <!-- Find ID Sekolah -->

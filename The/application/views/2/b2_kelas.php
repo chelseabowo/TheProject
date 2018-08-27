@@ -102,6 +102,10 @@
           	<label for="">ID Kelas</label>
             <input name="in_id_kelas" type="text" class="form-control" readonly>
           </div>
+          <div class="form-group has-feedback">
+            <label for="">Wali Kelas</label>
+            <input name="in_wali_kelas" type="text" class="form-control" placeholder="NIP" >
+          </div>
       <div class="modal-footer">
         <button class="btn btn-success" type="submit">
           Submit

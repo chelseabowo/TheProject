@@ -34,7 +34,7 @@ class M_kelas extends CI_Model {
 		return $this->db->get_where($where,$table);
 	}
 
-	function update_sekolah($where,$data,$table)
+	function update_kelas($where,$data,$table)
 	{
 		$this->db->where($where);
 		$this->db->update($table,$data);

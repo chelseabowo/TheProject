@@ -35,12 +35,13 @@ class C_kelas extends CI_Controller {
 
 		$kelas_nama = $this->input->post('in_nama_kelas');
 		$kelas_id   = $this->input->post('in_id_kelas');
-
+		// $wali_kelas = $this->input->post('in_wali_kelas');
 		date_default_timezone_set('Asia/Jakarta');
 		$date = date('Y-m-d h:i:sa');
 		$data = array(
 			'kelas_nama'   => $kelas_nama,
 			'kelas_id'     => $kelas_id,
+			// 'wali_kelas'   => $wali_kelas,	
 			'd_sekolah_id' => $role['d_sekolah_id'],
 			'created_by'   => $profil['m_user_id'],
 			'created_date' => $date
@@ -58,6 +59,32 @@ class C_kelas extends CI_Controller {
 		$where = array('d_kelas_id' => $d_kelas_id);
 		$data['edit'] = $this->M_kelas->edit_kelas($where,'d_kelas')->row_array();
 		$this->load->view('2/edit_data_kelas',$data);
+	}
+	public function update_kelas(){
+// $us = $this->session->userdata('user');
+		// $where = array('user_id' => $us );
+		// // $data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
+		// $updated_by = $this->M_profil->myprofil('m_user',$where)->row_array();
+
+		$id  	      = $this->input->post('in_kelas_id');
+		$nama_kelas = $this->input->post('in_nama_kelas_edit');
+		$id_kelas   = $this->input->post('in_id_kelas_edit');
+		// $wali_kelas = $this->input_>post('in_wali_kelas_edit')
+		date_default_timezone_set('Asia/Jakarta');
+		$date = date('Y-m-d h:i:sa');
+	
+		$data = array(
+			'kelas_nama'    => $nama_kelas,
+			'kelas_id'      => $id_kelas,
+			// 'wali_kelas'	=> $wali_kelas,
+			'updated_date'    => $date 
+			 
+		);
+		$where = array (
+			'd_kelas_id' => $id 
+		);
+		$this->M_kelas->update_kelas($where,$data,'d_kelas');
+		redirect('2/C_kelas');
 	}
 	public function hapus_kelas($d_kelas_id){
 		$where = array('d_kelas_id' => $d_kelas_id );
