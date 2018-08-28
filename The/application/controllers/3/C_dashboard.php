@@ -5,7 +5,7 @@ class C_dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('3/M_profil');
+		$this->load->model('4/M_profil');
 		$this->load->helper('url');
 
 		if($this->session->userdata('status') != "login"){
@@ -19,7 +19,7 @@ class C_dashboard extends CI_Controller {
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['content'] ="3/a1_dashboard";
-		$this->load->view('Home_konselor',$data);
+		$this->load->view('Home_kepala_sekolah',$data);
 	}
 
 }
