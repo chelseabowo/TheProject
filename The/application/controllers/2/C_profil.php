@@ -21,21 +21,29 @@ class C_profil extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		// $data['kelas'] = $this->M_kelas->tampil_kelas('d_kelas',$where)->result();
+		$data['profil'] = $this->M_profil->mydataprofile($where)->row_array();
 		$data['content'] ="2/v_profil";
 		$this->load->view('Home_admin',$data);
 	}
 
-	public function edit($user_id)
+	public function edit_profil()
+	{
+		$user = $this->session->userdata('user');
+		$where = array('user_id' => $user );
+		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
+		$data['profil'] = $this->M_profil->mydataprofile($where)->row_array();
+		$data['content'] ="2/v_edit_profil";
+		$this->load->view('Home_admin',$data);
+	}
+
+	public function edit_sekolah()
 	{
 
-		$cek = $this->M_profil->ambil_sekolah('where username='.$user_id);
-		$data = array('user_name' => $cek[0]['user_name'] , 
-					'sekolah_nama' => $cek[0]['sekolah_nama'] ,
-					'user_email' => $cek[0]['user_email'] ,
-			);
-
-		$this->load->view('v_profil', $data);
-		
 	}
+
+	public function edit_password()
+	{
+
+	}
+
 }

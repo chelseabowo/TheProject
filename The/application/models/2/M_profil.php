@@ -10,24 +10,32 @@ class M_profil extends CI_Model {
 	function myrole($table,$where){
 		return $this->db->get_where($table,$where);	
 	}
-
-
-	// function ambil_sekolah(){
-	// 	// mengambil data sekolah dari m_user d_user
-	// 	SELECT sk.sekolah_nama from d_sekolah sk LEFT JOIN d_user_role ur on sk.d_sekolah_id = ur.d_sekolah_id LEFT JOIN m_user us on ur.m_user_id = us.m_user_id where  
-	// }
 	
-    public function ambil_sekolah($sekolah_nama)
-    {
-        $this->db->select('sk.sekolah_nama');
-        $this->db->from('d_sekolah');
-        $this->db->join('d_user_role','sk.d_sekolah_id = ur.d_sekolah_id','left');
-        $this->db->where('sk.sekolah_nama',$sekolah_nama);
-        // $this->db->where('p.kategori !=','Penyuluh');
-        $query = $this->db->get();
-        return $query->result();
-    }
-
+	function mydataprofile($where){
+		//echo $where['user_id'];
+		$query = "SELECT
+		us.m_user_id,
+		us.user_id,
+		us.user_nama,
+		us.user_password,
+		us.user_tempat_lahir,
+		us.user_tanggal_lahir,
+		gn.gender_nama,
+		us.user_alamat,
+		us.user_email,
+		us.user_no_hp,
+		sk.d_sekolah_id,
+		sk.sekolah_id,
+		sk.sekolah_nama
+		FROM m_user us
+		LEFT JOIN d_user_role ur ON us.m_user_id = ur.m_user_id
+		LEFT JOIN d_sekolah sk ON ur.d_sekolah_id = sk.d_sekolah_id
+		LEFT JOIN m_gender gn ON us.m_gender_id = gn.m_gender_id
+		where us.user_id = '$where[user_id]'
+		";
+		return $this->db->query($query);
+	}
+	
 }
 
 /* End of file M_profil.php */
