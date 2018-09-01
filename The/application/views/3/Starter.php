@@ -11,7 +11,7 @@
 </head>
 
 <body>
-<form method="POST" action="<?php echo base_url('4/C_starter/update_registrasi'); ?>" name="sekolah">
+<form method="POST" action="<?php echo base_url('3/C_starter/update_registrasi'); ?>" name="sekolah">
 <div class="container" style="margin-top: 50px;">
     <h1 align="center">Form Data Pribadi</h1>
     <div id="app">
