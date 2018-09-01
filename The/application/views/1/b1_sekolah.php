@@ -8,14 +8,10 @@
     <thead>
       <tr style="background-color:#906CD7;">
         <th style="color:#CDF76F;">NO.</th>
-        <th style="color:#CDF76F;">Nama Sekolah</th>
         <th style="color:#CDF76F;">ID Sekolah</th>
-        <th style="color:#CDF76F;">Alamat Sekolah</th>
-        <th style="color:#CDF76F;">No Telp</th>
-        <th style="color:#CDF76F;">Provinsi</th>
-        <th style="color:#CDF76F;">Kota/Kab.</th>
-        <th style="color:#CDF76F;">Kecamatan</th>
-        <th style="color:#CDF76F;">Kelurahan</th>
+        <th style="color:#CDF76F;">Nama Sekolah</th>
+        <th style="color:#CDF76F;">ID Admin</th>
+        <th style="color:#CDF76F;">Nama Admin</th>
         <th style="color:#CDF76F;">Opsi</th>
       </tr>
     </thead>
@@ -26,14 +22,10 @@
       ?>
       <tr style="background-color:#F7FFE6;">
         <td><?php echo $no++ ?></td>
+        <td><a href="<?php echo base_url('1/C_kelas/index/'); echo $ls->d_sekolah_id; ?>"><?php echo $ls->sekolah_id;?></a></td>
         <td><?php echo $ls->sekolah_nama; ?></td>
-        <td><?php echo $ls->sekolah_id; ?></td>
-        <td><?php echo $ls->sekolah_alamat; ?></td>
-        <td><?php echo $ls->sekolah_no_telp; ?></td>
-        <td><?php echo $ls->provinsi_nama; ?></td>
-        <td><?php echo $ls->kota_nama; ?></td>
-        <td><?php echo $ls->kecamatan_nama; ?></td>
-        <td><?php echo $ls->kelurahan_nama; ?></td>
+        <td><?php echo $ls->user_id; ?></td>
+        <td><?php echo $ls->user_nama; ?></td>
        <td>
           <!-- <?php echo anchor ('1/C_sekolah/edit_sekolah/'.$ls->d_sekolah_id,'EDIT') ;?> -->
           <a class="btn btn-success btn-xs" href="#edit_data_sekolah" data-toggle="modal" data-id="<?php echo $ls->d_sekolah_id;?>">Edit</a>

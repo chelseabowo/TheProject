@@ -3,9 +3,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_sekolah extends CI_Model {
 
-	function tampil_sekolah($special = false)
+	function tampil_sekolah($where,$special = false)
 	{
-		$master_data_sekolah='SELECT 
+		$master_data_sekolah="SELECT 
 		sk.d_sekolah_id,
 		sk.sekolah_id,
 		sk.sekolah_nama,
@@ -14,13 +14,19 @@ class M_sekolah extends CI_Model {
 		pro.provinsi_nama,
 		kt.kota_nama,
 		kc.kecamatan_nama,
-		kl.kelurahan_nama
+		kl.kelurahan_nama,
+		ur.m_user_id,
+		us.user_id,
+		us.user_nama
 		FROM d_sekolah sk
 		LEFT JOIN m_provinsi pro ON sk.m_provinsi_id = pro.m_provinsi_id
 		LEFT JOIN m_kota kt ON sk.m_kota_id = kt.m_kota_id
 		LEFT JOIN m_kecamatan kc ON sk.m_kecamatan_id = kc.m_kecamatan_id
 		LEFT JOIN m_kelurahan kl ON sk.m_kelurahan_id = kl.m_kelurahan_id
-		';
+		LEFT JOIN d_user_role ur ON sk.d_sekolah_id = ur.d_sekolah_id
+		LEFT JOIN m_user us ON ur.m_user_id = us.m_user_id
+		WHERE ur.m_role_id ='2'
+		";
 		return $this->db->query($master_data_sekolah);
 	}
 

@@ -7,6 +7,10 @@ class M_profil extends CI_Model {
 		return $this->db->get_where($table,$where);
 	}
 
+	function myrole($table,$where){
+		return $this->db->get_where($table,$where);	
+	}
+
 }
 
 /* End of file M_profil.php */

@@ -12,7 +12,7 @@ class M_kelas extends CI_Model {
 			kl.kelas_nama,
 			kl.kelas_id
 			FROM d_kelas kl
-			LEFT JOIN d_user_role ur ON kl.d_kelas_id = ur.d_kelas_id
+			LEFT JOIN d_user_role ur ON kl.d_sekolah_id = ur.d_sekolah_id
 			LEFT JOIN m_user us ON ur.m_user_id = us.m_user_id
 			WHERE us.user_id='$where[user_id]'
 		";

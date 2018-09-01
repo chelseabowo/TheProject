@@ -16,12 +16,11 @@ class C_sekolah extends CI_Controller {
 
 	public function index()
 	{
-	
 		$us                   = $this->session->userdata('user');
 		$where                = array('user_id' => $us );
 		$data['itsme']        = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['content']      = "1/b1_sekolah";
-		$data['list_sekolah'] = $this->M_sekolah->tampil_sekolah()->result();
+		$data['list_sekolah'] = $this->M_sekolah->tampil_sekolah($where)->result();
 		$data['provinsi']     = $this->M_sekolah->tampil_provinsi()->result();
 		$data['kota']         = $this->M_sekolah->tampil_kota()->result();
 		$data['kecamatan']    = $this->M_sekolah->tampil_kecamatan()->result();

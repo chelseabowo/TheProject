@@ -42,13 +42,13 @@ class C_kepala_sekolah extends CI_Controller {
 		$date = date('Y-m-d h:i:sa');
 
 		$data1 = array(
-			'user_id'       => $nip,
-			'user_nama'     => $nama, 
-			'user_email'    => $email,
-			'user_password' => $password,
-			'is_kepala_sekolah'      => $iskepalasekolah,
-			'created_date'  => $date,
-			'is_active'     => '1'
+			'user_id'           => $nip,
+			'user_nama'         => $nama, 
+			'user_email'        => $email,
+			'user_password'     => $password,
+			'is_kepala_sekolah' => $iskepalasekolah,
+			'created_date'      => $date,
+			'is_active'         => '1'
 		);
 		$this->M_kepala_sekolah->tambah_kepala_sekolah($data1,'m_user');
 		redirect('2/C_kepala_sekolah');

@@ -1,0 +1,15 @@
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_super_admin,is_active) VALUES ('1','admin','Super Admin','zxcv','1','1');
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_admin,is_active) VALUES ('2','1111-1','Admin Sekolah','123','1','1');
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_kepala_sekolah,is_active) VALUES ('3','1112','Kepala Sekolah','123','1','1');
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_konselor,is_active) VALUES ('4','1113','Konselor','123','1','1');
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_guru_bk,is_active) VALUES ('5','1114','Guru BK','123','1','1');
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_guru_mapel,is_active) VALUES ('6','1115','Guru Mapel','123','1','1');
+INSERT INTO m_user (m_user_id,user_id,user_nama,user_password,is_wali_kelas,is_active) VALUES ('7','1116','Wali Kelas','123','1','1');
+
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('1','1','1');
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('2','2','1');
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('3','3','1');
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('4','4','1');
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('5','5','1');
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('6','6','1');
+INSERT INTO d_user_role (m_user_id,m_role_id,is_verified) VALUES ('7','7','1');

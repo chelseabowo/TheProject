@@ -59,7 +59,7 @@
                 <b class="caret"></b>
             </a>
             <ul class="dropdown-menu extended logout">
-                <li><a href="#"><i class=" fa fa-suitcase"></i>Profile</a></li>
+                <li><a href="<?php echo base_url('2/C_profil') ?>"><i class=" fa fa-suitcase"></i>Profile</a></li>
                 <li><a href="<?php echo base_url('Dashboard/pr_logout')?>"><i class="fa fa-key"></i> Log Out</a></li>
             </ul>
         </li>
@@ -88,7 +88,7 @@
                     <span>Data Sekolah</span>
                   </a>
                   <ul class="sub">
-                    <li><a href="<?php echo base_url('2/C_profil') ?>">Profil Sekolah</a></li>
+                    <li><a href="">Profil Sekolah</a></li>
                     <li><a href="<?php echo base_url('2/C_kelas') ?>">Kelas</a></li>
                   </ul>
                 </li>
