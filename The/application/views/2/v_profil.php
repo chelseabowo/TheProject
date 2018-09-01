@@ -1,3 +1,11 @@
+<?php 
+$gen1 = '';
+$gen2 = '';
+$edit_gender = isset($profil['m_gender_id'])?$profil['m_gender_id'] : $this->input->post('in_gender');
+if ($edit_gender=='1')      { $gen1 = " selected"; }
+else if ($edit_gender=='2') { $gen2 = " selected"; }
+else{$edit_gender = " selected";}
+?>
 <h2>Personal info</h2>
 <hr>
 	<div class="row">
@@ -14,57 +22,65 @@
       </div>
       <!-- edit form column -->
       <div class="col-md-9 personal-info">
-      <form class="form-horizontal" role="form">
+      <form action="<?php echo base_url('2/C_profil/edit_profil/'); ?>" class="form-horizontal" method="POST">
 			<div class="form-group">
             <label class="control-label col-md-3 ">Username:</label>
             <div class="col-md-8">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['user_nama']; ?>" type="text" readonly>
+              <input name="in_user_nama" class="form-control" value="<?php echo $profil['user_nama']; ?>" type="text">
             </div>
 			</div>
 			<div class="form-group">
             <label class="col-lg-3 control-label">Sekolah:</label>
             <div class="col-lg-6">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['sekolah_nama']; ?>" type="text" readonly>
+              <input class="form-control" value="<?php echo $profil['sekolah_nama']; ?>" type="text" readonly>
             </div>
             <div class="col-md-2">
-              <a href="#" class="btn btn-primary form-control" data-target="#modal_edit_sekolah" data-toggle="modal">Edit</a>
+              <a href="#" class="btn btn-primary form-control" data-target="#modal_edit_sekolah" data-toggle="modal">Lihat</a>
             </div>
 			</div>
       <div class="form-group">
             <label class="col-lg-3 control-label">TTL:</label>
-            <div class="col-lg-8">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['user_tempat_lahir'] .', '. $profil['user_tanggal_lahir']; ?>" type="text" readonly>
+            <div class="col-lg-5">
+              <input name="in_tempat_lahir" class="form-control" value="<?php echo $profil['user_tempat_lahir'] ; ?>" type="text">
+            </div>
+            <div class="col-lg-3">
+              <input name="in_tanggal lahir" class="form-control" value="<?php echo $profil['user_tanggal_lahir']; ?>" type="date">
             </div>
       </div>
       <div class="form-group">
             <label class="col-lg-3 control-label">Jenis Kelamin :</label>
             <div class="col-lg-8">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['gender_nama']; ?>" type="text" readonly>
+              <select name="in_gender" class="form-control">
+              <option value="1" <?php echo $gen1; ?>  >Perempuan</option>        
+              <option value="2" <?php echo $gen2; ?>  >Laki-Laki</option>
+              </select>
             </div>
       </div>
       <div class="form-group">
             <label class="col-lg-3 control-label">Alamat:</label>
             <div class="col-lg-8">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['user_alamat']; ?>" type="text" readonly>
+              <input name="in_alamat" class="form-control" value="<?php echo $profil['user_alamat']; ?>" type="text">
             </div>
       </div>
 			<div class="form-group">
             <label class="col-lg-3 control-label">Email:</label>
             <div class="col-lg-8">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['user_email']; ?>" type="text" readonly>
+              <input name="in_email" class="form-control" value="<?php echo $profil['user_email']; ?>" type="email">
             </div>
 			</div>
       <div class="form-group">
             <label class="col-lg-3 control-label">No HP:</label>
             <div class="col-lg-8">
-              <input class="form-control" id="disabledInput" value="<?php echo $profil['user_no_hp']; ?>" type="text" readonly>
+              <input name="in_no_hp" class="form-control" value="<?php echo $profil['user_no_hp']; ?>" type="text">
             </div>
       </div>
 
 			<div class="form-group">
             <label class="col-md-3 control-label"></label>
             <div class="col-md-2">
-              <a href="<?php echo base_url('2/C_profil/edit_profil/'); ?>" class="form-control btn btn-success">Edit</a>
+              <button class="form-control btn btn-success" type="submit">
+                Edit
+              </button>
 			      </div>
 			</div>
         </form>

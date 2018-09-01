@@ -20,6 +20,7 @@ class M_profil extends CI_Model {
 		us.user_password,
 		us.user_tempat_lahir,
 		us.user_tanggal_lahir,
+		gn.m_gender_id,
 		gn.gender_nama,
 		us.user_alamat,
 		us.user_email,
@@ -36,6 +37,11 @@ class M_profil extends CI_Model {
 		return $this->db->query($query);
 	}
 	
+	function update_profil($table,$where,$data)
+	{
+		$this->db->where($where);
+		$this->db->update($table, $data);
+	}
 }
 
 /* End of file M_profil.php */
