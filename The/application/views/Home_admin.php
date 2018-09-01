@@ -88,7 +88,7 @@
                     <span>Data Sekolah</span>
                   </a>
                   <ul class="sub">
-                    <li><a href="">Profil Sekolah</a></li>
+                    <li><a href="<?php echo base_url('2/C_profil') ?>">Profil Sekolah</a></li>
                     <li><a href="<?php echo base_url('2/C_kelas') ?>">Kelas</a></li>
                   </ul>
                 </li>
