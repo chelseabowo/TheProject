@@ -77,12 +77,12 @@
         <div class="leftside-navigation">
             <ul class="sidebar-menu" id="nav-accordion">
                 <li>
-                    <a href="<?php echo base_url('2/C_dashboard') ?>">
+                    <a href="<?php echo base_url('4/C_dashboard') ?>">
                         <i class="fa fa-dashboard"></i>
                         <span>Dashboard</span>
                     </a>
                 </li>
-                <li class="sub-menu">
+               <!--  <li class="sub-menu">
                   <a>
                     <i class="fa fa-hdd-o"></i>
                     <span>Master Data</span>
@@ -90,20 +90,21 @@
                   <ul class="sub">
                     <li><a href="">Kelas</a></li>
                   </ul>
-                </li>
+                </li> -->
                 <li class="sub-menu">
                     <a>
                         <i class="fa fa-user"></i>
                         <span>Member</span>
                     </a>
                     <ul class="sub">
-                        <li><a href="#">Kepala Sekolah</a></li>
-                        <li><a href="#">Konselor</a></li>
-                        <li><a href="#">Guru BK</a></li>
-                        <li><a href="#">Guru Mapel</a></li>
-                        <li><a href="#">Wali Kelas</a></li>
-                        <li><a href="#">Murid</a></li>
-                        <li><a href="#">Wali Murid</a></li>
+                        <li><a href="<?php echo base_url('4/C_kepala_sekolah') ?>">Kepala Sekolah</a></li>
+                        <li><a href="<?php echo base_url('4/C_konselor') ?>">Konselor</a></li>
+                        <li><a href="<?php echo base_url('4/C_gurubk') ?>">Guru BK</a></li>
+                        <li><a href="<?php echo base_url('4/C_guru_mapel') ?>">Guru Mapel</a></li>
+                        <li><a href="<?php echo base_url('4/C_wali_kelas') ?>">Wali Kelas</a></li>
+                        <li><a href="<?php echo base_url('4/C_murid') ?>">Murid</a></li>
+                        <li><a href="<?php echo base_url('4/C_wali_murid') ?>">Wali Murid</a></li>
+                       
                     </ul>
                 </li>
             </ul>            

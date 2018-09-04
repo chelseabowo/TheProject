@@ -3,15 +3,18 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
 class M_murid extends CI_Model {
 
-	function all_admin(){
+	function Tampil_murid($where){
 		$query="SELECT
 		url.m_user_id,
 		url.d_user_role_id,
 		us.user_nama,
 		us.user_id,
+		us.user_alamat,
+		us.user_no_hp,
 		us.user_password,
 		rl.role_nama,
 		sk.sekolah_nama,
+		kl.kelas_nama,
 		(CASE
 			WHEN url.is_verified='0' THEN 'NOT VERIFIED'
 			WHEN url.is_verified='1' THEN 'VERIFIED'
@@ -20,8 +23,17 @@ class M_murid extends CI_Model {
 		FROM d_user_role url 
 		LEFT JOIN m_user us ON url.m_user_id = us.m_user_id 
 		LEFT JOIN m_role rl ON url.m_role_id = rl.m_role_id
+		LEFT JOIN d_kelas kl ON url.d_kelas_id = kl.d_kelas_id
 		LEFT JOIN d_sekolah sk ON url.d_sekolah_id = sk.d_sekolah_id
-		WHERE us.m_user_id !='1' and us.is_murid='1'
+		WHERE us.is_murid = '1' and sk.d_sekolah_id = (
+		Select
+		skl.d_sekolah_id
+		From
+		M_user us
+		LEFT JOIN d_user_role ur ON us.m_user_id = ur.m_user_id
+		LEFT JOIN d_sekolah skl ON ur.d_sekolah_id= skl.d_sekolah_id
+		WHERE us.m_user_id='$where[m_user_id]'
+		)
 		";
 		return $this->db->query($query);
 	}

@@ -8,6 +8,8 @@ class M_wali_murid extends CI_Model {
 		url.m_user_id,
 		url.d_user_role_id,
 		us.user_nama,
+		us.user_alamat,
+		us.user_no_hp,
 		us.user_id,
 		us.user_password,
 		rl.role_nama,
