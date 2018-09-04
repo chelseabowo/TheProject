@@ -1,13 +1,13 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class C_gurubk extends CI_Controller {
+class C_kepala_sekolah extends CI_Controller {
 
 	public function __construct()
 	{
 		parent::__construct();
 		$this->load->model('3/M_profil');
-		$this->load->model('3/M_gurubk');
+		$this->load->model('3/M_kepala_sekolah');
 		$this->load->helper('url');
 
 		if($this->session->userdata('status') != "login"){
@@ -20,51 +20,51 @@ class C_gurubk extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_gurubk->tampil_gurubk($data['itsme'])->result();
-		$data['content'] ="3/B3_gurubk";
+		$data['a_s'] = $this->M_kepala_sekolah->all_kepala_sekolah()->result();
+		$data['content'] ="3/B1_kepala_sekolah";
 		$this->load->view('Home_kepala_sekolah',$data);
 	}
 
-	// public function verifikasi_gurubk($d_user_role_id){
+	// public function verifikasi_kepala_sekolah($d_user_role_id){
 	// 	$where = array('d_user_role_id' => $d_user_role_id );
-	// 	$this->M_gurubk->verifikasi_gurubk($where);
-	// 	redirect('3/C_gurubk');
+	// 	$this->M_kepala_sekolah->verifikasi_kepala_sekolah($where);
+	// 	redirect('3/C_kepala_sekolah');
 	// }
 
-	// public function tambah_baru_gurubk()
+	// public function tambah_baru_kepala_sekolah()
 	// {
 	// 	$nip      = $this->input->post('in_userid');
 	// 	$nama     = $this->input->post('in_nama');
 	// 	$email    = $this->input->post('in_email');
 	// 	$password = $this->input->post('in_password');
-	// 	$isgurubk  = 1;
+	// 	$iskepalasekolah  = '1';
 	// 	date_default_timezone_set('Asia/Jakarta');
 	// 	$date = date('Y-m-d h:i:sa');
 
 	// 	$data1 = array(
-	// 		'user_id'       => $nip,
-	// 		'user_nama'     => $nama, 
-	// 		'user_email'    => $email,
-	// 		'user_password' => $password,
-	// 		'is_guru_bk'      => $isgurubk,
-	// 		'created_date'  => $date,
-	// 		'is_active'     => '1'
+	// 		'user_id'           => $nip,
+	// 		'user_nama'         => $nama, 
+	// 		'user_email'        => $email,
+	// 		'user_password'     => $password,
+	// 		'is_kepala_sekolah' => $iskepalasekolah,
+	// 		'created_date'      => $date,
+	// 		'is_active'         => '1'
 	// 	);
-	// 	$this->M_gurubk->tambah_gurubk($data1,'m_user');
-	// 	redirect('3/C_gurubk');
+	// 	$this->M_kepala_sekolah->tambah_kepala_sekolah($data1,'m_user');
+	// 	redirect('3/C_kepala_sekolah');
 	// }
-	// public function hapus_gurubk($m_user_id){
+	// public function hapus_kepala_sekolah($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id );
-	// 	$this->M_gurubk->hapus_gurubk($where);
-	// 	redirect('3/C_gurubk');
+	// 	$this->M_kepala_sekolah->hapus_kepala_sekolah($where);
+	// 	redirect('3/C_kepala_sekolah');
 	// }
-	// function edit_gurubk($m_user_id){
+	// function edit_kepala_sekolah($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id);
-	// 	$data['m_user'] = $this->M_gurubk->edit_gurubk($where,'m_user')->result();
+	// 	$data['m_user'] = $this->M_kepala_sekolah->edit_kepala_sekolah($where,'m_user')->result();
 		
-	// 	$this->load->view('3/edit_gurubk',$data);
+	// 	$this->load->view('3/edit_kepala_sekolah',$data);
 	// }
-	// public function update_gurubk(){
+	// public function update_kepala_sekolah(){
 	// 	// $us = $this->session->userdata('user');
 	// 	// $where = array('user_id' => $us );
 	// 	// // $data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
@@ -99,8 +99,8 @@ class C_gurubk extends CI_Controller {
 	// 	$where = array (
 	// 		'm_user_id' => $m_user_id 
 	// 	);
-	// 	$this->M_gurubk->update_gurubk($where,$data,'m_user');
-	// 	redirect('3/C_gurubk');
+	// 	$this->M_kepala_sekolah->update_kepala_sekolah($where,$data,'m_user');
+	// 	redirect('3/C_kepala_sekolah');
 	// }
 
 }

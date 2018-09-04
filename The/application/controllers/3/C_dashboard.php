@@ -5,7 +5,7 @@ class C_dashboard extends CI_Controller {
 
 	function __construct(){
 		parent::__construct();
-		$this->load->model('4/M_profil');
+		$this->load->model('3/M_profil');
 		$this->load->helper('url');
 
 		if($this->session->userdata('status') != "login"){

@@ -21,7 +21,7 @@ class C_wali_murid extends CI_Controller {
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['a_s'] = $this->M_wali_murid->all_admin()->result();
-		$data['content'] ="3/j1_wali_murid";
+		$data['content'] ="3/B7_wali_murid";
 		$this->load->view('Home_kepala_sekolah',$data);
 	}
 
