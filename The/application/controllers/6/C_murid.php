@@ -20,8 +20,8 @@ class C_murid extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_murid->all_admin()->result();
-		$data['content'] ="6/i1_murid";
+		$data['a_s'] = $this->M_murid->tampil_murid($data['itsme'])->result();
+		$data['content'] ="6/B6_murid";
 		$this->load->view('Home_guru_mapel',$data);
 	}
 

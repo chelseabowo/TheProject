@@ -20,15 +20,15 @@ class C_gurubk extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_gurubk->all_admin()->result();
-		$data['content'] ="6/f1_gurubk";
+		$data['a_s'] = $this->M_gurubk->tampil_gurubk($data['itsme'])->result();
+		$data['content'] ="6/B3_gurubk";
 		$this->load->view('Home_guru_mapel',$data);
 	}
 
 	// public function verifikasi_gurubk($d_user_role_id){
 	// 	$where = array('d_user_role_id' => $d_user_role_id );
 	// 	$this->M_gurubk->verifikasi_gurubk($where);
-	// 	redirect('4/C_gurubk');
+	// 	redirect('3/C_gurubk');
 	// }
 
 	// public function tambah_baru_gurubk()
@@ -51,7 +51,7 @@ class C_gurubk extends CI_Controller {
 	// 		'is_active'     => '1'
 	// 	);
 	// 	$this->M_gurubk->tambah_gurubk($data1,'m_user');
-	// 	redirect('4/C_gurubk');
+	// 	redirect('3/C_gurubk');
 	// }
 	// public function hapus_gurubk($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id );
@@ -100,7 +100,7 @@ class C_gurubk extends CI_Controller {
 	// 		'm_user_id' => $m_user_id 
 	// 	);
 	// 	$this->M_gurubk->update_gurubk($where,$data,'m_user');
-	// 	redirect('4/C_gurubk');
+	// 	redirect('3/C_gurubk');
 	// }
 
 }

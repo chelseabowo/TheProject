@@ -20,15 +20,15 @@ class C_kepala_sekolah extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_kepala_sekolah->all_kepala_sekolah()->result();
-		$data['content'] ="6/d1_kepala_sekolah";
+		$data['a_s'] = $this->M_kepala_sekolah->tampil_kepala_sekolah($data['itsme'])->result();
+		$data['content'] ="6/B1_kepala_sekolah";
 		$this->load->view('Home_guru_mapel',$data);
 	}
 
 	// public function verifikasi_kepala_sekolah($d_user_role_id){
 	// 	$where = array('d_user_role_id' => $d_user_role_id );
 	// 	$this->M_kepala_sekolah->verifikasi_kepala_sekolah($where);
-	// 	redirect('4/C_kepala_sekolah');
+	// 	redirect('3/C_kepala_sekolah');
 	// }
 
 	// public function tambah_baru_kepala_sekolah()
@@ -42,27 +42,27 @@ class C_kepala_sekolah extends CI_Controller {
 	// 	$date = date('Y-m-d h:i:sa');
 
 	// 	$data1 = array(
-	// 		'user_id'       => $nip,
-	// 		'user_nama'     => $nama, 
-	// 		'user_email'    => $email,
-	// 		'user_password' => $password,
-	// 		'is_kepala_sekolah'      => $iskepalasekolah,
-	// 		'created_date'  => $date,
-	// 		'is_active'     => '1'
+	// 		'user_id'           => $nip,
+	// 		'user_nama'         => $nama, 
+	// 		'user_email'        => $email,
+	// 		'user_password'     => $password,
+	// 		'is_kepala_sekolah' => $iskepalasekolah,
+	// 		'created_date'      => $date,
+	// 		'is_active'         => '1'
 	// 	);
 	// 	$this->M_kepala_sekolah->tambah_kepala_sekolah($data1,'m_user');
-	// 	redirect('4/C_kepala_sekolah');
+	// 	redirect('3/C_kepala_sekolah');
 	// }
 	// public function hapus_kepala_sekolah($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id );
 	// 	$this->M_kepala_sekolah->hapus_kepala_sekolah($where);
-	// 	redirect('4/C_kepala_sekolah');
+	// 	redirect('3/C_kepala_sekolah');
 	// }
 	// function edit_kepala_sekolah($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id);
 	// 	$data['m_user'] = $this->M_kepala_sekolah->edit_kepala_sekolah($where,'m_user')->result();
 		
-	// 	$this->load->view('4/edit_kepala_sekolah',$data);
+	// 	$this->load->view('3/edit_kepala_sekolah',$data);
 	// }
 	// public function update_kepala_sekolah(){
 	// 	// $us = $this->session->userdata('user');
@@ -100,7 +100,7 @@ class C_kepala_sekolah extends CI_Controller {
 	// 		'm_user_id' => $m_user_id 
 	// 	);
 	// 	$this->M_kepala_sekolah->update_kepala_sekolah($where,$data,'m_user');
-	// 	redirect('4/C_kepala_sekolah');
+	// 	redirect('3/C_kepala_sekolah');
 	// }
 
 }

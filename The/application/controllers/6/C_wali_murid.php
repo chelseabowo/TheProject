@@ -21,15 +21,15 @@ class C_wali_murid extends CI_Controller {
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['a_s'] = $this->M_wali_murid->all_admin()->result();
-		$data['content'] ="6/j1_wali_murid";
-		$this->load->view('Home_konselor',$data);
+		$data['content'] ="6/B7_wali_murid";
+		$this->load->view('Home_guru_mapel',$data);
 	}
 
-	public function verifikasi_wali_murid($d_user_role_id){
-		$where = array('d_user_role_id' => $d_user_role_id );
-		$this->M_wali_murid->verifikasi_wali_murid($where);
-		redirect('6/C_wali_murid');
-	}
+	// public function verifikasi_wali_murid($d_user_role_id){
+	// 	$where = array('d_user_role_id' => $d_user_role_id );
+	// 	$this->M_wali_murid->verifikasi_wali_murid($where);
+	// 	redirect('3/C_wali_murid');
+	// }
 
 	// public function tambah_baru_wali_murid()
 	// {

@@ -20,8 +20,8 @@ class C_guru_mapel extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_guru_mapel->all_admin()->result();
-		$data['content'] ="6/g1_guru_mapel";
+		$data['a_s'] = $this->M_guru_mapel->tampil_guru_mapel($data['itsme'])->result();
+		$data['content'] ="6/B4_guru_mapel";
 		$this->load->view('Home_guru_mapel',$data);
 	}
 

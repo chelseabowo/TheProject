@@ -20,15 +20,15 @@ class C_konselor extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_konselor->all_admin()->result();
-		$data['content'] ="6/e1_konselor";
+		$data['a_s'] = $this->M_konselor->tampil_konselor($data['itsme'])->result();
+		$data['content'] ="6/B2_konselor";
 		$this->load->view('Home_guru_mapel',$data);
 	}
 
 	// public function verifikasi_konselor($d_user_role_id){
 	// 	$where = array('d_user_role_id' => $d_user_role_id );
 	// 	$this->M_konselor->verifikasi_konselor($where);
-	// 	redirect('4/C_konselor');
+	// 	redirect('3/C_konselor');
 	// }
 
 	// public function tambah_baru_konselor()
@@ -51,18 +51,18 @@ class C_konselor extends CI_Controller {
 	// 		'is_active'     => '1'
 	// 	);
 	// 	$this->M_konselor->tambah_konselor($data1,'m_user');
-	// 	redirect('4/C_konselor');
+	// 	redirect('3/C_konselor');
 	// }
 	// public function hapus_konselor($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id );
 	// 	$this->M_konselor->hapus_konselor($where);
-	// 	redirect('4/C_konselor');
+	// 	redirect('3/C_konselor');
 	// }
 	// function edit_konselor($m_user_id){
 	// 	$where = array('m_user_id' => $m_user_id);
 	// 	$data['m_user'] = $this->M_konselor->edit_konselor($where,'m_user')->result();
 		
-	// 	$this->load->view('4/edit_konselor',$data);
+	// 	$this->load->view('3/edit_konselor',$data);
 	// }
 	// public function update_konselor(){
 	// 	// $us = $this->session->userdata('user');
@@ -100,7 +100,7 @@ class C_konselor extends CI_Controller {
 	// 		'm_user_id' => $m_user_id 
 	// 	);
 	// 	$this->M_konselor->update_konselor($where,$data,'m_user');
-	// 	redirect('4/C_konselor');
+	// 	redirect('3/C_konselor');
 	// }
 
 }

@@ -20,8 +20,8 @@ class C_wali_kelas extends CI_Controller {
 		$user = $this->session->userdata('user');
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
-		$data['a_s'] = $this->M_wali_kelas->all_admin()->result();
-		$data['content'] ="6/h1_wali_kelas";
+		$data['a_s'] = $this->M_wali_kelas->tampil_wali_kelas($data['itsme'])->result();
+		$data['content'] ="5/B5_wali_kelas";
 		$this->load->view('Home_guru_mapel',$data);
 	}
 
