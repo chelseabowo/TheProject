@@ -16,7 +16,7 @@ class M_profil extends CI_Model {
 	{
 		$a = $this->db->get_where('m_user', array('user_id' => $user))->row_array();
 		$b = $this->db->get_where('d_sekolah',array('sekolah_id'=>$data1['sekolah_id']))->row_array();
-		$c = $this->db->get_where('d_kelas',array('kelas_id'=>$data1['kelas_id']))->row_array();
+		$c = $this->db->get_where('d_kelas',array('kelas_id' => $data1['kelas_id'],'d_sekolah_id' => $b['d_sekolah_id']))->row_array();
 		
 		$this->db->where('m_user_id', $a['m_user_id']);
 		$this->db->update('m_user', $data2);
