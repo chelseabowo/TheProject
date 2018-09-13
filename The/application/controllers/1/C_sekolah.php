@@ -25,7 +25,7 @@ class C_sekolah extends CI_Controller {
 		$data['kota']         = $this->M_sekolah->tampil_kota()->result();
 		$data['kecamatan']    = $this->M_sekolah->tampil_kecamatan()->result();
 		$data['kelurahan']    = $this->M_sekolah->tampil_kelurahan()->result();
-		$this->load->view('home',$data);
+		$this->load->view('Home',$data);
 	}
 
 	public function sekolah()
@@ -39,7 +39,7 @@ class C_sekolah extends CI_Controller {
 		$data['kota']         = $this->data_sekolah->tampil_kota()->result();
 		$data['kecamatan']    = $this->data_sekolah->tampil_kecamatan()->result();
 		$data['kelurahan']    = $this->data_sekolah->tampil_kelurahan()->result();
-		$this->load->view('home', $data);
+		$this->load->view('Home', $data);
 	}
 
 	public function tambah_sekolah()
@@ -135,6 +135,7 @@ class C_sekolah extends CI_Controller {
 		$data['kelurahan']    = $this->data_sekolah->tampil_kelurahan()->result();
 		$this->load->view('1/edit_data_sekolah',$data);
 	}
+	
 	function edit_sekolah($d_sekolah_id){
 		$us = $this->session->userdata('user');
 		$where = array('user_id' => $us );

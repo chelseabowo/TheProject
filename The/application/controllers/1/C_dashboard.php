@@ -19,7 +19,7 @@ class C_dashboard extends CI_Controller {
 		$where = array('user_id' => $user );
 		$data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['content'] ="1/a1_dashboard";
-		$this->load->view('home',$data);
+		$this->load->view('Home',$data);
 	}
 
 }

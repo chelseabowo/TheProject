@@ -109,7 +109,7 @@
 
 
 
-<!-- Tambah Data Sekolah -->
+<!-- Tambah Data Murid -->
 <div id="modal_tambah_data" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
   <div class="modal-dialog modal-md">
     <div class="modal-content">
@@ -127,7 +127,7 @@
           </div>
           
           <div class="form-group has-feedback">
-            <label>NIP</label>
+            <label>NIS</label>
             <input name="in_userid" type="text" class="form-control" placeholder="NIP">
           </div>
           
@@ -156,7 +156,7 @@
     </div>
   </div>
 </div>
-<!-- Tambah Data Sekolah -->
+<!-- Tambah Data Murid -->
 
 
 <!-- JS Show/Hide Password -->

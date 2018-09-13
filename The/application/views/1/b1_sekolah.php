@@ -1,7 +1,6 @@
 <h3><b>Daftar Sekolah</b></h3>
 <a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Data Sekolah</a>
-</br></br>
-
+</br>
 <div class='table-responsive' style="background-color:#E3FB71;">
   </br>
   <table id="myTable" class='table table-bordered' syle="color:#CDF76F">
@@ -22,7 +21,7 @@
       ?>
       <tr style="background-color:#F7FFE6;">
         <td><?php echo $no++ ?></td>
-        <td><a href="<?php echo base_url('1/C_kelas/index/'); echo $ls->d_sekolah_id; ?>"><?php echo $ls->sekolah_id;?></a></td>
+        <td><a href="<?php echo base_url('1/C_kelas/index/'.$ls->d_sekolah_id);?>"><?php echo $ls->sekolah_id;?></a></td>
         <td><?php echo $ls->sekolah_nama; ?></td>
         <td><?php echo $ls->user_id; ?></td>
         <td><?php echo $ls->user_nama; ?></td>
@@ -85,14 +84,14 @@
       </div>
 
       <div class="modal-body">
-        <form action="<?php echo base_url('1/C_sekolah/tambah_sekolah'); ?>" method="POST">
+        <form action="<?php echo base_url('1/C_sekolah/tambah_sekolah'); ?>" method="POST" name="sekolah">
           <div class="form-group has-feedback">
             <label for="">Nama Sekolah</label>
-            <input name="in_nama_sekolah" type="text" class="form-control" placeholder="Nama Sekolah">
+            <input name="in_nama_sekolah" type="text" class="form-control" placeholder="Nama Sekolah" onFocus="findstart();" onBlur="findstop();">
           </div>
           <div class="form-group has-feedback">
             <label for="">ID Sekolah</label>
-            <input name="in_id_sekolah" type="text" class="form-control" placeholder="ID Sekolah">
+            <input name="in_id_sekolah" type="text" class="form-control" placeholder="ID Sekolah" readonly>
           </div>
           <div class="form-group has-feedback">
             <label for="">Alamat Sekolah</label>
@@ -193,3 +192,18 @@
     });
 </script>
 <!-- Edit Data Sekolah -->
+
+<!-- Find ID Sekolah -->
+<script> 
+function findstart(){
+interval = setInterval("find()",1);}
+function find(){
+var in_s = document.sekolah.in_nama_sekolah.value;
+var hasil = in_s.split(" ").join("");
+
+document.sekolah.in_id_sekolah.value = hasil.toUpperCase();
+}
+function findstop(){
+clearInterval(interval);}
+</script>
+<!-- Find ID Sekolah -->

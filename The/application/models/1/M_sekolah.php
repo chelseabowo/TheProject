@@ -5,7 +5,7 @@ class M_sekolah extends CI_Model {
 
 	function tampil_sekolah($where,$special = false)
 	{
-		$master_data_sekolah="SELECT 
+		$master_data_sekolah="SELECT distinct
 		sk.d_sekolah_id,
 		sk.sekolah_id,
 		sk.sekolah_nama,
