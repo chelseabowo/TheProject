@@ -82,10 +82,8 @@ class C_sekolah extends CI_Controller {
 		redirect('1/C_sekolah');
 	}
 
-	
-
 	public function update_sekolah(){
-// $us = $this->session->userdata('user');
+		// $us = $this->session->userdata('user');
 		// $where = array('user_id' => $us );
 		// // $data['itsme'] = $this->M_profil->myprofil('m_user',$where)->row_array();
 		// $updated_by = $this->M_profil->myprofil('m_user',$where)->row_array();
@@ -121,6 +119,7 @@ class C_sekolah extends CI_Controller {
 		$this->M_sekolah->update_sekolah($where,$data,'d_sekolah');
 		redirect('1/C_sekolah');
 	}
+	
 	public function tampil_modal($d_sekolah_id){
 		$us = $this->session->userdata('user');
 		$where = array('user_id' => $us );

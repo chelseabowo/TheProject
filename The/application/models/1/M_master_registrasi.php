@@ -56,7 +56,20 @@ class M_master_registrasi extends CI_Model {
 		$this->db->insert('d_user_role', $role);
 	}
 
-	function tambah_murid($data1,$data2)
+	function signin_md($data1,$data2)
+	{
+		$a = $this->db->get_where('d_kelas',$data1)->row_array();
+		$b = $this->db->get_where('m_user',$data2)->row_array();
+		$role = array(
+			'd_sekolah_id' => $a['d_sekolah_id'],
+			'd_kelas_id'   => $a['d_kelas_id'],
+			'is_verified'  => '1'
+		);
+		$this->db->where(array('m_user_id' => $b['m_user_id']));
+		$this->db->update('d_user_role', $role);
+	}
+
+	function signup_md($data1,$data2)
 	{
 		$this->db->insert('m_user', $data2);
 		$last_id = $this->db->insert_id();

@@ -74,7 +74,7 @@
 <hr>
 
 <div class="center-text">
-  <a href="<?php echo base_url('1/C_kelas/index/'); echo $ssw->d_sekolah_id; ?>" class="btn btn-info btn-md" style="text-align: center;"><i class="fa fa-arrow-circle-left"></i> Kembali Ke Profil Sekolah</a>
+  <a href="<?php echo base_url('1/C_kelas/index/'); echo $wk['d_sekolah_id']; ?>" class="btn btn-info btn-md" style="text-align: center;"><i class="fa fa-arrow-circle-left"></i> Kembali Ke Profil Sekolah</a>
 </div>
 
 <!-- Detail Data Siswa -->
@@ -202,8 +202,35 @@ clearInterval(interval);}
         <h4 class="modal-title" id="myModalLabel">Tambah Murid</h4>
       </div>
 
+      <ul class="nav nav-pills nav-justified">
+        <li class="active"><a data-toggle="pill" href="#signin">Sign In</a></li>
+        <li><a data-toggle="pill" href="#signup">Sign Up</a></li>
+      </ul>
+
       <div class="modal-body">
-         <form action="<?php echo base_url('1/C_detail_kelas/tambah_baru_murid'); ?>" method="POST">
+        <div class="tab-content">
+          <div id="signin" class="tab-pane fade in active">
+          <form action="<?php echo base_url('1/C_detail_kelas/signin_murid'); ?>" method="POST">
+              <input name="in_d_kelas_id" type="hidden" class="form-control" value="<?php echo $d_kelas_id; ?>">
+              <div class="form-group has-feedback">
+                <label>NIS</label>
+                <input name="in_user_id" type="text" class="form-control" placeholder="NIP" required>
+              </div>
+          <div class="modal-footer">
+            <button class="btn btn-success" type="submit">
+              Submit
+            </button>
+            <button type="reset" class="btn btn-danger"  data-dismiss="modal" aria-hidden="true">
+              Cancel
+            </button>
+          </div>
+            </form>
+
+          </div>
+          
+          <div id="signup" class="tab-pane fade">
+
+          <form action="<?php echo base_url('1/C_detail_kelas/signup_murid'); ?>" method="POST">
           <input name="in_d_kelas_id" type="hidden" class="form-control" value="<?php echo $d_kelas_id; ?>">
           <div class="form-group has-feedback">
             <label> Nama Lengkap</label>
@@ -260,6 +287,9 @@ clearInterval(interval);}
       </div>
       
         </form>
+      </div> 
+    </div>
+
       </div> 
     </div>
   </div>
@@ -364,8 +394,6 @@ clearInterval(interval);}
           </div>
         </div>
         
-            
-
       </div> 
     </div>
   </div>

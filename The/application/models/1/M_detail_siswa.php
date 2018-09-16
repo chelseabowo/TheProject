@@ -20,6 +20,7 @@ class M_detail_siswa extends CI_Model {
 	{
 		$query = "
 			SELECT
+			kl.d_sekolah_id,
 			kl.kelas_nama,
 			kl.kelas_id,
 			(

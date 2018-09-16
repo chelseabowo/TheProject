@@ -26,7 +26,7 @@ class C_detail_kelas extends CI_Controller {
 		$data['itsme']      = $this->M_profil->myprofil('m_user',$where)->row_array();
 		$data['gender']     = $this->M_profil->call_gender()->result();
 		$data['content']    = "1/b12_detail_kelas";
-		$this->load->view('home',$data);
+		$this->load->view('Home',$data);
 	}
 
 	public function tampil_detail_siswa()
@@ -39,7 +39,19 @@ class C_detail_kelas extends CI_Controller {
 		$this->load->view('1/detail_siswa',$data);
 	}
 
-	public function tambah_baru_murid()
+	public function signin_murid()
+	{
+		$d_kelas_id = $this->input->post('in_d_kelas_id');
+		$user_id    = $this->input->post('in_user_id');
+
+		$data1 = array('d_kelas_id' => $d_kelas_id);
+		$data2 = array('user_id' => $user_id);
+
+		$this->M_master_registrasi->signin_md($data1,$data2);
+		redirect(base_url('1/C_detail_kelas/index/'.$data1['d_kelas_id']));
+	}
+
+	public function signup_murid()
 	{
 		$d_kelas_id = $this->input->post('in_d_kelas_id');
 
@@ -70,7 +82,7 @@ class C_detail_kelas extends CI_Controller {
 			'created_date'       => $date,
 			'is_active'          => '1'
 		);
-		$this->M_master_registrasi->tambah_murid($data1,$data2);
+		$this->M_master_registrasi->singup_md($data1,$data2);
 		redirect(base_url('1/C_detail_kelas/index/'.$data1['d_kelas_id']));
 	}
 
