@@ -1,6 +1,6 @@
 <h3><b>Daftar Provinsi</b></h3>
 <a href="#" class="btn btn-success btn-sm" data-target="#modal_tambah_data" data-toggle="modal">Tambah Provinsi</a>
-</br>
+</br></br>
 <div class='table-responsive' style="background-color:#E3FB71;">
   </br>
   <table id="myTable" class='table table-bordered' syle="color:#CDF76F">
